@@ -1,0 +1,24 @@
+{
+    "configurations": [
+      {
+        "type": "lldb",
+        "request": "launch",
+        "sourceLanguages": ["swift"],
+        "args": [],
+        "cwd": "${workspaceFolder:prog2-2025-project-template}",
+        "name": "Debug prog2-2025-project",
+        "program": "${workspaceFolder:prog2-2025-project-template}/.build/debug/prog2-2025-project",
+        "preLaunchTask": "swift: Build Debug prog2-2025-project"
+      },
+      {
+        "type": "lldb",
+        "request": "launch",
+        "sourceLanguages": ["swift"],
+        "args": [],
+        "cwd": "${workspaceFolder:prog2-2025-project-template}",
+        "name": "Release prog2-2025-project",
+        "program": "${workspaceFolder:prog2-2025-project-template}/.build/release/prog2-2025-project",
+        "preLaunchTask": "swift: Build Release prog2-2025-project"
+      }
+    ]
+  }
