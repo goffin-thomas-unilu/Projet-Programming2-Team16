@@ -42,8 +42,8 @@ Druid : Chastisement of the Ancients (Damage + life theft 10%)
 
 ## Affinity System
 
-|   Affinty     | Strong against |Weak against|Stamina| special effects | 
-|-----------------|-----------------|-----------------|-----|---|
+|   Affinty     | Strong against |Weak against| special effects | 
+|-----------------|-----------------|-----------------|-----|
 | Fire| Ice |Water|2-turn burn|
 |Ice | Water |Fire|Slowing down (25%)|
 | Light | Darkness |Darkness|Immunity to curses|
