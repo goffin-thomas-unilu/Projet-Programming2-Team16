@@ -40,6 +40,17 @@ Hunter : Piercing Arrow (ignores 50% enemy DEF)
 Pyromancer : Supreme fireball (burns for 3 turns)
 Druid : Chastisement of the Ancients (Damage + life theft 10%)
 
+## Affinity System
+
+|   Affinty     | Strong against |Weak against|Stamina| special effects | 
+|-----------------|-----------------|-----------------|-----|---|
+| Fire| Ice |Water|2-turn burn|
+|Ice | Water |Fire|Slowing down (25%)|
+| Light | Darkness |Darkness|Immunity to curses|
+| Darkness| Light |Light|life theft (+5% per attack)|
+| Earth| Fire |Water|armor +20|
+| Water| Fire |Ice|Care +10% in aquatic zone|
+
 ## Stages / Map
 -->Map.png
 
