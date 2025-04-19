@@ -134,6 +134,6 @@ Experience (lvl 1 – lvl4)
 
 ### Bonus Features planned
 
-SpriteKit
 
+2D art with ASCII Art
 Easter Egg
