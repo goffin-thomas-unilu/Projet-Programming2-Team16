@@ -34,11 +34,11 @@ The protagonist is one of these Heroes, commissioned by the Imperial Order to in
 
 ### Special Skills
 
-Knight : Knight's will (+25% DEF, +25% ATK for 2 turns)
-Paladin : Divine Lightning (Light damage + healing 15 HP)
-Hunter : Piercing Arrow (ignores 50% enemy DEF)
-Pyromancer : Supreme fireball (burns for 3 turns)
-Druid : Chastisement of the Ancients (Damage + life theft 10%)
+- Knight : Knight's will (+25% DEF, +25% ATK for 2 turns)
+- Paladin : Divine Lightning (Light damage + healing 15 HP)
+- Hunter : Piercing Arrow (ignores 50% enemy DEF)
+- Pyromancer : Supreme fireball (burns for 3 turns)
+- Druid : Chastisement of the Ancients (Damage + life theft 10%)
 
 ## Affinity System
 
@@ -103,22 +103,28 @@ stage [ID] - Display information about a specific stage
 
 help - List all available commands
 
-## Enemy
-Goblin
+## Enemy & Behaviors
 
-Skeleton
+### Regular Enemies
 
-Undead
+| Enemy         | HP  | ATK | DEF | SPD | Affinity | Skills                        |
+|---------------|-----|-----|-----|-----|----------|------------------------------------|
+| 🧌 Goblin      | 60  | 15  | 5   | 18  | Earth    | May steal items, flee at low HP   |
+| 💀 Skeleton    | 80  | 20  | 15  | 10  | Darkness | Revives once, magic resistant      |
+| 🧟 Undead      | 100 | 18  | 10  | 8   | Darkness | Poison, heals over time            |
+| 🐺 Werewolf    | 120 | 25  | 12  | 22  | None     | Stronger at night                  |
+| 👻 Ice Specter | 90  | 15  | 8   | 20  | Ice      | Can freeze, drains MP              |
 
-Werewolf
+---
 
-Ice specter
+### Boss Enemies
 
-Boss :
-			Cave Giant
-			Necromancer
-			Mad Alchemist (optional)
-			Valdrakar: Fallen Dragon King
+| Boss                          | HP  | ATK | DEF | SPD | Affinity | Skills                      |
+|-------------------------------|-----|-----|-----|-----|----------|-------------------------------------|
+| 🗿 Cave Giant                 | 250 | 30  | 30  | 5   | Earth    | AoE damage, breaks armor            |
+| 🦴 Necromancer                | 200 | 20  | 15  | 10  | Darkness | Summons undead, drains HP/MP        |
+| 🧪 Mad Alchemist *(optional)* | 180 | ??  | 10  | 14  | None     | Random potion effects               |
+| 🐉 Valdrakar                 | 400 | 35  | 25  | 16  | Darkness | Gets stronger <50% HP, AoE breath   |
 
 ## Point Systems
 
