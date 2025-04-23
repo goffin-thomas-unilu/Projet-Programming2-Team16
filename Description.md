@@ -24,13 +24,13 @@ Among all the kingdoms in existence, the Kingdom of Midland is one of the most p
 The protagonist is one of these Heroes, commissioned by the Imperial Order to investigate a certain dungeon, the Karadûm's Keep, following numerous attacks in the region, to eliminate the monsters. Little does the protagonist know that he will find something more than a problem for the Midland's Kingdom.
 
 ## Player Characters
-|   Class     | Health Point |Mana|Stamina| Attack| Speed | Defense | Magic
-|-----------------|-----------------|-----------------|-----|---|---|--|--|
-| Knight| 170 |10|35|40|8|30|5
-|Paladin | 150 |25|30|30|12|25|25
-| Hunter | 110 |15|25| 50|20|15|15
-| Druid| 120 |30|20|20|10|15|40
-| Pyromancer| 90 |35|15|10|15|5|60
+|   Class     | Health Point |Mana|Stamina| Attack| Speed | Defense | Magic| Affinity|
+|-----------------|-----------------|-----------------|-----|---|---|--|--|---|
+| Knight| 170 |10|35|40|8|30|5|Earth|
+|Paladin | 150 |25|30|30|12|25|25|Light|
+| Hunter | 110 |15|25| 50|20|15|15|Ice|
+| Druid| 120 |30|20|20|10|15|40|Water|
+| Pyromancer| 90 |35|15|10|15|5|60|Fire|
 
 ### Special Skills
 
