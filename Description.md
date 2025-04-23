@@ -138,8 +138,7 @@ Experience (lvl 1 – lvl4)
 
   
 
-### Bonus Features planned
+### Bonus Features 
 
-
-2D art with ASCII Art
+2D art with ASCII Art 
 Easter Egg
