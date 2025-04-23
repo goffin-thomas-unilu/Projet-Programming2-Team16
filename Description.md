@@ -140,5 +140,7 @@ Experience (lvl 1 – lvl4)
 
 ### Bonus Features 
 
-2D art with ASCII Art 
-Easter Egg
+2D art with ASCII Art + ASCII animation for boss
+Riddle/puzzle (to access a new stage)
+Quest + dialog
+Easter Egg (become a dragon with specific method)
