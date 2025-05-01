@@ -15,6 +15,7 @@ struct Stage1 {
     let name: String
     var description: String
     var map: [[Tile1]]
+    var baseMap: [[Tile1]]
     var playerPosition: (x: Int, y: Int)
     var connexion: [Int]
 
@@ -26,6 +27,7 @@ struct Stage1 {
         self.playerPosition = (0,2)
         self.map[playerPosition.x][playerPosition.y] = Tile1(type: .player)
         self.connexion = connexion
+        self.baseMap = map
     }
 
     mutating func displayMap() {
@@ -63,10 +65,10 @@ struct Stage1 {
         // Vérifie que le mouvement est dans les limites de la map
         if newX >= 0, newX < map.count, newY >= 0, newY < map[0].count {
             // Optionnel : bloquer si c’est un obstacle
-            var precedentTile = map[newX][newY]
+            
 
             // Déplace le joueur
-            map[x][y] = precedentTile
+            map[x][y] = baseMap[x][y]
             map[newX][newY] = Tile1(type: .player)
             playerPosition = (newX, newY)
             print("✅ You moved \(direction).")
