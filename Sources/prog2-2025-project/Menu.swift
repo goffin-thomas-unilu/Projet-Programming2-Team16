@@ -1,4 +1,5 @@
 func menu (){
+    print()
     print("Que voulez faire ? ")
     print("- Afficher la map : map")
     print("- Se déplacer : move")
