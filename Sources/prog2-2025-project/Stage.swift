@@ -1,3 +1,4 @@
+
 enum TileType {
     case empty
     case player
@@ -50,25 +51,22 @@ struct Stage1 {
         var newY = y
 
         switch direction.lowercased() {
-        case "up": newX -= 1
-        case "down": newX += 1
-        case "left": newY -= 1
-        case "right": newY += 1
-        default:
-            print("❌ Unknown direction.")
-            return
+            case "up": newX -= 1
+            case "down": newX += 1
+            case "left": newY -= 1
+            case "right": newY += 1
+            default:
+                print("❌ Unknown direction.")
+                return
         }
 
         // Vérifie que le mouvement est dans les limites de la map
         if newX >= 0, newX < map.count, newY >= 0, newY < map[0].count {
             // Optionnel : bloquer si c’est un obstacle
-            if case .obstacle = map[newX][newY].type {
-                print("🪨 You bumped into an obstacle!")
-                return
-            }
+            var precedentTile = map[newX][newY]
 
             // Déplace le joueur
-            map[x][y] = Tile1(type: .empty)
+            map[x][y] = precedentTile
             map[newX][newY] = Tile1(type: .player)
             playerPosition = (newX, newY)
             print("✅ You moved \(direction).")

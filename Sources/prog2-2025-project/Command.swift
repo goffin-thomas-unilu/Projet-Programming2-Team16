@@ -1,3 +1,4 @@
+var finished = false
 func printCommand(){
     print()
     print("Voici la liste des commandes :")
@@ -25,9 +26,34 @@ func printCommand(){
         menu()
     case "exit":
         print("Vous quittez le jeu")
-    
+        finished = true
+        exit(0)
     default:
         print("La commande renseignée n'existe pas, retour au menu..")
+        menu()
+    }
+
+}
+
+func askMove(){
+    print()
+    print("Ou voulez-vous vous déplacer : \n-up \n-left \n-right \n-down")
+    let moveChoice = readLine()
+    switch moveChoice?.lowercased() {
+    case "up":
+        stageMTN.move(direction: "up")
+        menu()
+    case "down":
+        stageMTN.move(direction: "down")
+        menu()
+    case "left":
+        stageMTN.move(direction: "left")
+        menu()
+    case "right":
+        stageMTN.move(direction: "right")
+        menu()
+    default:
+        print("Direction inconnue, veuillez réessayer")
         menu()
     }
 

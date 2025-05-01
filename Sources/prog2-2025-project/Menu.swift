@@ -11,7 +11,8 @@ func menu (){
             stageMTN.displayMap()
             menu()
         case "move":
-            stageMTN.move(direction: "up")
+            askMove()
+            menu()
         case "attack":
             print("Vous engagez le combat")
         case "command":
