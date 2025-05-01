@@ -65,7 +65,10 @@ struct Stage1 {
         // Vérifie que le mouvement est dans les limites de la map
         if newX >= 0, newX < map.count, newY >= 0, newY < map[0].count {
             // Optionnel : bloquer si c’est un obstacle
-            
+            if case .nextStage(Int) = map[newX][newY].type {
+                print("🪨 You bumped into an obstacle!")
+                return
+            }
 
             // Déplace le joueur
             map[x][y] = baseMap[x][y]
