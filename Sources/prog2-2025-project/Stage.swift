@@ -1,11 +1,11 @@
-
+var boolNextStage = false
 enum TileType {
     case empty
     case player
     case obstacle
     case item(String)
     case enemy(String)
-    case nextStage(Int)
+    case nextStage([Int])
 }
 struct Tile1{
     var type : TileType
@@ -65,17 +65,27 @@ struct Stage1 {
         // Vérifie que le mouvement est dans les limites de la map
         if newX >= 0, newX < map.count, newY >= 0, newY < map[0].count {
             // Optionnel : bloquer si c’est un obstacle
-            if case .nextStage(Int) = map[newX][newY].type {
-                print("🪨 You bumped into an obstacle!")
-                return
-            }
+            //if case .nextStage(self.connexion) = map[newX][newY].type {
+            //    askStage()
+            //    return
+            //}
+            // Pattern Matching
+            // ⚠️ Sauvegarde du type de la case AVANT modification
+            let tileType = map[newX][newY].type
 
-            // Déplace le joueur
+            // Mise à jour de la map
             map[x][y] = baseMap[x][y]
             map[newX][newY] = Tile1(type: .player)
             playerPosition = (newX, newY)
+
             print("✅ You moved \(direction).")
             displayMap()
+
+            // Vérification si on est sur une case nextStage
+            if case .nextStage(_) = tileType {
+                boolNextStage = true
+            }
+
         } else {
             print("🚫 Can't move outside the map!")
         }

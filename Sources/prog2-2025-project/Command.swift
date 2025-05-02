@@ -40,21 +40,61 @@ func askMove(){
     print("Ou voulez-vous vous déplacer : \n-up \n-left \n-right \n-down")
     let moveChoice = readLine()
     switch moveChoice?.lowercased() {
-    case "up":
-        stageMTN.move(direction: "up")
-        menu()
-    case "down":
-        stageMTN.move(direction: "down")
-        menu()
-    case "left":
-        stageMTN.move(direction: "left")
-        menu()
-    case "right":
-        stageMTN.move(direction: "right")
-        menu()
-    default:
-        print("Direction inconnue, veuillez réessayer")
+        case "up":
+            stageMTN.move(direction: "up")
+            if boolNextStage{
+                askStage()
+            }
+            menu()
+        case "down":
+            stageMTN.move(direction: "down")
+            if boolNextStage{
+                askStage()
+            }
+            menu()
+        case "left":
+            stageMTN.move(direction: "left")
+            if boolNextStage{
+                askStage()
+            }
+            menu()
+        case "right":
+            stageMTN.move(direction: "right")
+            if boolNextStage{
+                askStage()
+            }
+            menu()
+        default:
+            print("Direction inconnue, veuillez réessayer")
+            menu()
+        }
+
+}
+
+func askStage(){
+    print()
+    print("Vous êtes actuellement au stage: id: \(stageMTN.id), name: \(stageMTN.name)")
+    print()
+    print("Choisissez à quel stage vous voulez accéder, en indiquant son id")
+    for stageEx in listeStage {
+        for idS in stageMTN.connexion{
+            if idS == stageEx.id {
+                print("Vous pouvez accéder aux stages: id: \(idS), name: \(stageEx.name)")
+            }
+        }
+    }
+    print("Si vous ne voulez pas changer de stage entrez: -1")
+    print("Enter an id :")
+    if let input = readLine(), let idChoice = Int(input) {
+        for stageEx2 in listeStage{
+            if stageEx2.id == idChoice {
+                stageMTN = stageEx2
+                print("Vous venez d'accéder au stage: \(stageMTN.name)")
+                menu()
+            }
+        }
+    } else {
+        print("❌ Invalid id.")
         menu()
     }
-
 }

@@ -17,8 +17,9 @@
 //changeStage(from: stageMTN, to: DungeonEntryStage)
 //stageMTN.displayMap()
 //askMove()
-
+//changeStage(from: stageMTN, to: ForestStage)
+//askStage()
 while !finished {
-    menu()
+   menu()
 }
 print("Vous avez finis / quitté")
