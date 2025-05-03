@@ -1,3 +1,4 @@
+// function for the menu the main part for the user to do what he want and what he can do
 func menu (){
     print()
     print("What do you want to do? ")

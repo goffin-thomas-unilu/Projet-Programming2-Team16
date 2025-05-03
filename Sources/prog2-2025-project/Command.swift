@@ -1,6 +1,7 @@
 import Glibc
 var finished = false
 func printCommand(){
+    // Show others commands
     print()
     print("Here is the list of orders :")
     print("- Show map : map")
@@ -13,43 +14,51 @@ func printCommand(){
 
     let commandChoose = readLine()
     switch commandChoose {
-    case "map":
-        stageMTN.displayMap()
-        menu()
-    case "inventory":
-        // fonction afficher inventaire
-        print("You have in your inventory :")
-        menu()
-    case "status":
-        // Affiche santé, mana + stats
-        print("This is your status : 150hp, 23mp ")
-        menu()    
-    case "stage":
-        print()
-        print("Info on the Current course: \n nom: \(stageMTN.name), \n id: \(stageMTN.id), \n description: \(stageMTN.description), \n linked to id: \(stageMTN.connexion) ")
-        menu()
-    case "assess":
-        print()
-        // function to print informations about a specific enemy, printEnemyInfo("Gobelin")
-    case "interact":
-        print("No mechanism to interact with")
-        // fonction pour intéragir avec les énigmes 
-    case "exit":
-        print("Leaving the game")
-        finished = true
-        exit(0)
-    default:
-        print("Order does not exist, return to menu...")
-        menu()
+        case "map":
+            // Show the map
+            stageMTN.displayMap()
+            menu()
+        case "inventory":
+            // Show inventory
+            // function to print inventory
+            print("You have in your inventory :")
+            menu()
+        case "status":
+            // Show health point, mana point + stats
+            print("This is your status : 150hp, 23mp ")
+            menu()    
+        case "stage":
+            // Show informations on the current stage
+            print()
+            print("Info on the Current course: \n nom: \(stageMTN.name), \n id: \(stageMTN.id), \n description: \(stageMTN.description), \n linked to id: \(stageMTN.connexion) ")
+            menu()
+        case "assess":
+            // Show informations about enemy
+            print()
+            // function to print informations about a specific enemy, printEnemyInfo("Gobelin")
+        case "interact":
+            // interact with mecanism
+            print("No mechanism to interact with")
+            // fonction pour intéragir avec les énigmes 
+        case "exit":
+            // leave the game
+            print("Leaving the game")
+            finished = true
+            exit(0)
+        default:
+            // if Typing error
+            print("Order does not exist, return to menu...")
+            menu()
     }
 
 }
-
+// ask the user where he want to go 
 func askMove(){
     print()
     //boolNextStage = false
     print("Where do you want to go : \n-up \n-left \n-right \n-down")
     let moveChoice = readLine()
+    // Check for each case if the player is on a tile to change stage
     switch moveChoice?.lowercased() {
         case "up":
             stageMTN.move(direction: "up")
@@ -82,7 +91,7 @@ func askMove(){
         
 
 }
-
+// ask the user if he want to change from a stage to another and if yes which stages
 func askStage(){
     print()
     boolNextStage = false
@@ -112,7 +121,7 @@ func askStage(){
     }
     
 }
-
+// function for the first riddle
 func enigme0(){
     print()
     print("Would you like to place something on the Hero's grave ?")
@@ -128,6 +137,7 @@ func enigme0(){
     }
     */
 }
+// function for the second riddle
 func enigme1() {
     print()
     print("You see a strange row of books...")

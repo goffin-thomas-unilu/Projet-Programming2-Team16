@@ -1,5 +1,6 @@
 var boolNextStage = false
 enum TileType {
+    // each case for a specifc object
     case empty
     case player
     case pnj(String)
@@ -20,6 +21,7 @@ struct Stage1 {
     var playerPosition: (x: Int, y: Int)
     var connexion: [Int]
 
+    // Constructor to create a stage
     init(id: Int, name: String, description: String, map : [[Tile1]],connexion: [Int]) {
         self.id = id
         self.name = name
@@ -30,14 +32,17 @@ struct Stage1 {
         self.connexion = connexion
         self.baseMap = map
     }
-
+    // function to show the current map
     mutating func displayMap() {
         print()
         print(self.name)
         print(self.description)
         print()
+        // read each line of the map
         for row in map {
+            // read each index of a line
             let line = row.map { tile in
+                // check for each tile type and return a specific emoji that represent the object to the exact position of the tile
                 switch tile.type {
                     case .empty: return "⬜"
                     case .player: return "🧍"
@@ -51,11 +56,14 @@ struct Stage1 {
             print(line)
         }
     }
+    // function to move the player in the map with a direction as a parameter
     mutating func move(direction: String) {
         let (x, y) = playerPosition
+        // this will be the new coordinates of the player 
         var newX = x
         var newY = y
 
+        // Check which direction the user gave
         switch direction.lowercased() {
             case "up": newX -= 1
             case "down": newX += 1
@@ -67,6 +75,7 @@ struct Stage1 {
         }
 
         // Vérifie que le mouvement est dans les limites de la map
+        // Checks that movement is within map limits
         if newX >= 0, newX < map.count, newY >= 0, newY < map[0].count {
             // 
             //if case .nextStage(self.connexion) = map[newX][newY].type {
@@ -104,31 +113,37 @@ struct Stage1 {
             */
              switch tileType {
                 case .enemy(let name):
+                    // start the fight with the enemy name
                     // func fight(enemy:name)
                     print("⚔️ You've defeated the enemy : \(name)")
+                    // we update the baseMap to avoid the fact the enemy is still here even if the user kill him
                     baseMap[newX][newY] = Tile1(type: .empty)
                 case .item(let itemName):
                     print("🎁 You've picked up : \(itemName)")
+                    // same here , to avoid a infinite numbers a object in the inventory
                     // addToInventory(item:itemName)
                     baseMap[newX][newY] = Tile1(type: .empty)
                 case .riddle(let idRiddle):
+                    // check which riddle the user encountered
                     switch idRiddle {
                         case 0:
                             print("❓ Riddle 1 :")
+                            // 1 attempt only for this riddle
                             // enigme0()
                         case 1:
                             enigme1()
                         default:
                             print("Riddle error")
                     }
-                    baseMap[newX][newY] = Tile1(type: .empty) // supprime l’énigme après
+                    baseMap[newX][newY] = Tile1(type: .empty) // supprime l’énigme après / Delete the riddle after 
                 case .nextStage:
+                    // launch the askstage function
                     boolNextStage = true
                 default:
                     break
             }
 
-            // Mise à jour de la position du joueur
+            // Mise à jour de la position du joueur / Update the player position
             map[x][y] = baseMap[x][y] // restore l’ancienne case
             map[newX][newY] = Tile1(type: .player)
             playerPosition = (newX, newY)
