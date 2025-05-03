@@ -1,50 +1,3 @@
-/*
-var listeStage: [Stage] = [stage1,stage2,stage3]
-
-func changeStage(to stageId: Int, from currentStage: inout Stage) -> Stage? {
-        if currentStage.connectTo.contains(stageId) {
-            print("Transition vers la zone \(stageId)...")
-            if let newStage = allStages.first(where: { $0.id == stageId }) {
-                return newStage
-            } else {
-                print("Erreur : Stage non trouvé.")
-            }
-        } else {
-            print("Ce stage n'est pas connecté.")
-        }
-        return nil
-    }
-var allStages = [stage1, stage2]
-var currentStageIndex = 0
-var currentStage = allStages[currentStageIndex]
-if let newStage = changeStage(to: 2, from: &currentStage) {
-    currentStage = newStage
-    currentStage.displayMap()
-}
-
-print(player1.nom)
-stage1.displayMap()
-stage1.move(direction: "doWN")
-stage1.move(direction: "Right")
-stage1.move(direction: "down")
-stage1.move(direction: "up")
-stage1.move(direction: "down")
-stage1.move(direction: "left")
-stage2.nouvelleZone()
-*/
-//let map1 = [[]]
-//var stage8 = Stage1(id: 1, name: "Dark Forest", description: "A shadowy forest full of secrets", map:)
-//stage8.displayMap()
-//var stage9 = Stage1(id: 1, name: "Dark Forest", description: "A shadowy forest full of secrets", map:)
-//stage9.map[1][2] = Tile1(type: .obstacle) // Place un obstacle
-//stage9.displayMap()
-
-//stage9.move(direction: "up")     // tente de monter
-//stage9.move(direction: "right")  // tente d'aller à droite
-
-//print(listeStage[2].connectTo)
-
-
 // Map creation
 
 let DungeonEntryMap: [[Tile1]] = [
@@ -107,7 +60,7 @@ let LaboratoryMap: [[Tile1]] = [
     [Tile1(type: .empty), Tile1(type: .enemy("Mad Alchemist")), Tile1(type: .empty)],
     [Tile1(type: .nextStage([9])), Tile1(type: .empty), Tile1(type: .item("Elixir of Honor"))]
 ]
-// Initialise le stage avec cette map
+// Initialise le stage avec sa map
 
     var DungeonEntryStage = Stage1(
         id: 0,
@@ -186,13 +139,15 @@ let LaboratoryMap: [[Tile1]] = [
         map: LaboratoryMap,
         connexion: [9]
     )
+// Start at the Entry of the dungeon / Actual Stage
 var stageMTN: Stage1 = DungeonEntryStage
-
+// a list of all stages
 var listeStage : [Stage1] = [DungeonEntryStage,ForestStage,CatacombStage,BridgeSoulsStage,AbyssSoulsStage,ForbiddenSanctuaryStage,GiantDenStage,HerosTombStage,KingHallStage,LibraryStage,LaboratoryStage]
-
+// Check if two stages are connected --> return a boolean
 func connecTo(stageActuel : Stage1,stageSuivant : Stage1) -> Bool{
     return stageActuel.connexion.contains(stageSuivant.id)
 }
+// function to change from a stage to a another
 func changeStage(from currentStage: Stage1, to newStage: Stage1){
         if connecTo(stageActuel: currentStage, stageSuivant: newStage) {
             print("Transition to the zone \(newStage.name)...")
