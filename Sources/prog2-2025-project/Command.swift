@@ -32,7 +32,7 @@ func printCommand(){
         print()
         // function to print informations about a specific enemy, printEnemyInfo("Gobelin")
     case "interact":
-        print()
+        print("No mechanism to interact with")
         // fonction pour intéragir avec les énigmes 
     case "exit":
         print("Leaving the game")
