@@ -3,6 +3,7 @@ enum TileType {
     case empty
     case player
     case pnj(String)
+    case riddle(Int)
     case item(String)
     case enemy(String)
     case nextStage([Int])
@@ -33,11 +34,14 @@ struct Stage1 {
     mutating func displayMap() {
         print()
         print(self.name)
+        print(self.description)
+        print()
         for row in map {
             let line = row.map { tile in
                 switch tile.type {
                     case .empty: return "⬜"
                     case .player: return "🧍"
+                    case .riddle(let idRiddle): return "❔"
                     case .pnj(let pnjName): return "👤"
                     case .item(let name): return "🎁"
                     case .enemy(let name): return "👾"

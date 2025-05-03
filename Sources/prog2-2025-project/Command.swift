@@ -22,7 +22,8 @@ func printCommand(){
         print("Voici votre état : 150hp, 23mp ")
         menu()    
     case "stage":
-        print("Info sur le stage Actuel: nom:\(stageMTN.name), id:\(stageMTN.id), description:\(stageMTN.description), relié aux id: \(stageMTN.connexion) ")
+        print()
+        print("Info sur le stage Actuel: \nnom:\(stageMTN.name), \nid:\(stageMTN.id), \ndescription:\(stageMTN.description), \nrelié aux id: \(stageMTN.connexion) ")
         menu()
     case "exit":
         print("Vous quittez le jeu")
