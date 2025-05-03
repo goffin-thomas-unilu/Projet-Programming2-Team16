@@ -123,6 +123,21 @@ struct Stage1 {
                     // same here , to avoid a infinite numbers a object in the inventory
                     // addToInventory(item:itemName)
                     baseMap[newX][newY] = Tile1(type: .empty)
+                case .pnj(let pnjName):
+                    print("In front of you is \(pnjName)")
+                    switch pnjName {
+                        case "Guardian of the Sanctuary":
+                            // func pnj encounter 1
+                            print()
+                            encounterPnj1()
+                            print("\u{001B}[36mSuccess:  Becoming friend with a Spectre\u{001B}[0m")
+                        case "Heros Tomb":
+                            // func pnj encounter 2
+                            print()
+                        default:
+                            print("Err")
+                    }
+                    baseMap[newX][newY] = Tile1(type: .empty)
                 case .riddle(let idRiddle):
                     // check which riddle the user encountered
                     switch idRiddle {

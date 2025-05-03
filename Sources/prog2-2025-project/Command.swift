@@ -159,3 +159,32 @@ func enigme1() {
 
 }
     
+func encounterPnj1(){
+    print()
+    print("Answer the spectrum 🩻 question if you have the courage")
+    print("The spectre murmurs in a cavernous voice 👻")
+    print("\u{001B}[3mWhat is the greatest burden a mortal can bear?\u{001B}[0m")
+    print("1: The weight of his faults \n2: Ignorance of the truth \n3: The loss of a loved one")
+    print("Your Answer: ")
+    if let input = readLine(), let number = Int(input) {
+        print("You have entered the number : \(number)")
+        switch number {
+        case 1:
+            print("\u{001B}[32m+5ATK\u{001B}[0m")
+            print("\u{001B}[31m-5DEF\u{001B}[0m")
+            // Update the player stats
+        case 2:
+            print("\u{001B}[32m+5HP\u{001B}[0m")
+            print("\u{001B}[31m-5MP\u{001B}[0m")
+            // Update the player stats
+        case 3:
+            print("\u{001B}[32m+5SPD\u{001B}[0m")
+            print("\u{001B}[31m-5DEF\u{001B}[0m")
+            // Update the player stats
+        default:
+            print("Err")
+        }
+    } else {
+        print("❌ Ce n'est pas un nombre valide.")
+    }
+}
