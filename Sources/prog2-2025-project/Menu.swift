@@ -1,9 +1,9 @@
 func menu (){
     print()
-    print("Que voulez faire ? ")
-    print("- Afficher la map : map")
-    print("- Se déplacer : move")
-    print("- Exécuter une commande : command")
+    print("What do you want to do? ")
+    print("- Show map : map")
+    print("- Moving around : move")
+    print("- Execute a command : command")
     if let reponse = readLine() {
         switch reponse {
         case "map":
@@ -15,7 +15,7 @@ func menu (){
         case "command":
             printCommand()
         default:
-            print("Erreur, veuillez réessayer")
+            print("Error, please try again")
             menu()
         }
     }

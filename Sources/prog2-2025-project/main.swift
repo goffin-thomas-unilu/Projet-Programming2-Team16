@@ -24,4 +24,3 @@ while !finished {
    
 
 }
-print("Vous avez finis / quitté")

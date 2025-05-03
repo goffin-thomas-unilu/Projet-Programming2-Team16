@@ -68,7 +68,7 @@ struct Stage1 {
 
         // Vérifie que le mouvement est dans les limites de la map
         if newX >= 0, newX < map.count, newY >= 0, newY < map[0].count {
-            // Optionnel : bloquer si c’est un obstacle
+            // 
             //if case .nextStage(self.connexion) = map[newX][newY].type {
             //    askStage()
             //    return
@@ -105,21 +105,21 @@ struct Stage1 {
              switch tileType {
                 case .enemy(let name):
                     // func fight(enemy:name)
-                    print("⚔️ Vous avez vaincu l'ennemi : \(name)")
+                    print("⚔️ You've defeated the enemy : \(name)")
                     baseMap[newX][newY] = Tile1(type: .empty)
                 case .item(let itemName):
-                    print("🎁 Vous avez ramassé : \(itemName)")
+                    print("🎁 You've picked up : \(itemName)")
                     // addToInventory(item:itemName)
                     baseMap[newX][newY] = Tile1(type: .empty)
                 case .riddle(let idRiddle):
                     switch idRiddle {
                         case 0:
-                            print("❓ Énigme 1 :")
+                            print("❓ Riddle 1 :")
                             // enigme0()
                         case 1:
                             enigme1()
                         default:
-                            print("Erreur d'énigme")
+                            print("Riddle error")
                     }
                     baseMap[newX][newY] = Tile1(type: .empty) // supprime l’énigme après
                 case .nextStage:

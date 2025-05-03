@@ -49,7 +49,7 @@ stage2.nouvelleZone()
 
 let DungeonEntryMap: [[Tile1]] = [
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
-    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .item("Journal d'un aventurier"))],
+    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .item("Diary of an adventurer"))],
     [Tile1(type: .nextStage([1,2])), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .nextStage([1,2]))]
 ]
 let CatacombMap: [[Tile1]] = [
@@ -69,7 +69,7 @@ let HauntedForestMap: [[Tile1]] = [
 let BridgeSoulsMap: [[Tile1]] = [
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
     [Tile1(type: .item("Letter")), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .item("Mana Potion"))],
-    [Tile1(type: .nextStage([1,4,5])), Tile1(type: .empty), Tile1(type: .pnj("Gardien du Sanctuaire")), Tile1(type: .empty), Tile1(type: .empty)]
+    [Tile1(type: .nextStage([1,4,5])), Tile1(type: .empty), Tile1(type: .pnj("Guardian of the Sanctuary")), Tile1(type: .empty), Tile1(type: .empty)]
 ]
 let AbyssSoulMap: [[Tile1]] = [
     [Tile1(type: .enemy("Ice Spectre")), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
@@ -111,78 +111,78 @@ let LaboratoryMap: [[Tile1]] = [
 
     var DungeonEntryStage = Stage1(
         id: 0,
-        name: "Entrée du Donjon",
-        description: "Une caverne qui fait froid dans le dos",
+        name: "Entrance to the Keep",
+        description: "A spine-chilling cavern",
         map: DungeonEntryMap,
         connexion: [1,2]
     )
     var ForestStage = Stage1(
         id: 1,
-        name: "Forêt Hantée",
-        description: "Une foret regroupant monstres et esprits",
+        name: "Haunted Forest",
+        description: "A forest of monsters and spirits",
         map: HauntedForestMap,
         connexion: [0,2,3]
     )
     var CatacombStage = Stage1(
         id: 2,
-        name: "Catacombes abandonnés",
-        description: "Un lieu rempli de squelettes et autres créatures fantomatiques",
+        name: "Abandoned catacombs",
+        description: "A place full of skeletons and other ghostly creatures",
         map: CatacombMap,
         connexion: [0,1,4]
     )
     var BridgeSoulsStage = Stage1(
         id: 3,
-        name: "Pont des Ames",
-        description: "Un mystérieux spectre semble vous attendre",
+        name: "Bridge of Souls",
+        description: "A mysterious spectre seems to be waiting for you",
         map: BridgeSoulsMap,
         connexion: [1,4,5]
     )
     var AbyssSoulsStage = Stage1(
         id: 4,
-        name: "Gouffre des Abysse",
-        description: "Des escaliers qui descendent dans un gouffre qui semble sans fond",
+        name: "Abyss of Lost Souls",
+        description: "Stairs leading down into a seemingly bottomless abyss",
         map: AbyssSoulMap,
         connexion: [2,3,5,6]
     )
     var ForbiddenSanctuaryStage = Stage1(
         id: 5,
         name: "Forbidden Sanctuary",
-        description: "Une salle ressemblant à un lieu de culte pour un héros du passé",
+        description: "A room resembling a place of worship for a hero of the past",
         map: ForbiddenSanctuaryMap,
         connexion: [3,7,8]
     )
     var GiantDenStage = Stage1(
         id: 6,
         name: "Giant's Den",
-        description: "Une caverne sombre où se trouve un géant à l'intérieur",
+        description: "A dark cavern with a giant inside",
         map: GiantDenMap,
         connexion: [4,8,9,]
     )
     var HerosTombStage = Stage1(
         id: 7,
         name: "Tomb of the Hero",
-        description: "Une tombe magnifique se trouve en plein milieu de la zone",
+        description: "A magnificent tomb stands right in the middle of the area",
         map: HeroTombMap,
         connexion: [5]
     )
     var KingHallStage = Stage1(
         id: 8,
         name: "King's Hall",
-        description: "Un étrange se trouve sur un trône en ruine ",
+        description: "A strange man sits on a ruined throne ",
         map: KingHallMap,
         connexion: [5,6]
     )
     var LibraryStage = Stage1(
         id: 9,
         name: "Cursed Library",
-        description: "Une mystérieuse bibliothèque cachant nombre de secrets",
+        description: "A mysterious library hiding many secrets",
         map: LibraryMap,
         connexion: [6,10]
     )
     var LaboratoryStage = Stage1(
         id: 10,
         name: "Alchemical Laboratory",
-        description: "Un laboratoire aux odeurs funèbres , une étrange silhouette se trouve en plein milieu ",
+        description: "A laboratory with a funereal odour, a strange figure stands in the middle of it. ",
         map: LaboratoryMap,
         connexion: [9]
     )
@@ -195,9 +195,9 @@ func connecTo(stageActuel : Stage1,stageSuivant : Stage1) -> Bool{
 }
 func changeStage(from currentStage: Stage1, to newStage: Stage1){
         if connecTo(stageActuel: currentStage, stageSuivant: newStage) {
-            print("Transition vers la zone \(newStage.name)...")
+            print("Transition to the zone \(newStage.name)...")
             stageMTN = newStage
         } else {
-            print("Ce stage n'est pas connecté.")
+            print("This course is not connected.")
         }
     }
