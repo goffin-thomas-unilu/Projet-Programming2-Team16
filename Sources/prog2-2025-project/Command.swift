@@ -1,3 +1,4 @@
+import Glibc
 var finished = false
 func printCommand(){
     print()
