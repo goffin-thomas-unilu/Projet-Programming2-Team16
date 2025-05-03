@@ -237,48 +237,48 @@ struct Enemy {
         }
     }
     
-    mutating func executeSkill(target: inout Character) {
-        for skill in skills {
-            let randomValue = Int.random(in: 1...100)
+    // mutating func executeSkill(target: inout Character) {
+    //     for skill in skills {
+    //         let randomValue = Int.random(in: 1...100)
             
-            switch skill {
-            case .stealItems(let chance) where randomValue <= chance:
-                if !target.inventory.isEmpty {
-                    let stolenItem = target.inventory.removeFirst()
-                    print("\(type) stole your \(stolenItem.name)!")
-                }
+    //         switch skill {
+    //         case .stealItems(let chance) where randomValue <= chance:
+    //             if !target.inventory.isEmpty {
+    //                 let stolenItem = target.inventory.removeFirst()
+    //                 print("\(type) stole your \(stolenItem.name)!")
+    //             }
                 
-            case .fleeAtLowHP where health < maxHealth / 4:
-                print("\(type) flees from battle!")
-                health = 0
+    //         case .fleeAtLowHP where health < maxHealth / 4:
+    //             print("\(type) flees from battle!")
+    //             health = 0
                 
-            case .poison(let damage, let duration):
-                print("You've been poisoned! (\(damage) dmg/turn)")
+    //         case .poison(let damage, let duration):
+    //             print("You've been poisoned! (\(damage) dmg/turn)")
                 
-            case .healOverTime(let amount):
-                health = min(maxHealth, health + amount)
-                print("\(type) heals \(amount) HP!")
+    //         case .healOverTime(let amount):
+    //             health = min(maxHealth, health + amount)
+    //             print("\(type) heals \(amount) HP!")
                 
-            case .drainMP(let amount):
-                target.mana = max(0, target.mana - amount)
-                print("\(type) drains \(amount) of your MP!")
+    //         case .drainMP(let amount):
+    //             target.mana = max(0, target.mana - amount)
+    //             print("\(type) drains \(amount) of your MP!")
                 
-            case .summonEnemy(let type):
-                print("\(type) summons a \(type)!")
+    //         case .summonEnemy(let type):
+    //             print("\(type) summons a \(type)!")
                 
-            case .randomPotionEffect:
-                let effects = ["heal", "poison", "boost", "confuse"]
-                let randomEffect = effects.randomElement()!
-                print("Mad Alchemist throws a strange potion: \(randomEffect) effect!")
+    //         case .randomPotionEffect:
+    //             let effects = ["heal", "poison", "boost", "confuse"]
+    //             let randomEffect = effects.randomElement()!
+    //             print("Mad Alchemist throws a strange potion: \(randomEffect) effect!")
                 
-            case .enrage(_, let multiplier) where health < maxHealth / 2:
-                print("\(type) enrages! Damage increased!")
+    //         case .enrage(_, let multiplier) where health < maxHealth / 2:
+    //             print("\(type) enrages! Damage increased!")
                 
-            default:
-                break
-            }
-        }
-    }
+    //         default:
+    //             break
+    //         }
+    //     }
+    // }
     
     mutating func takeDamage(_ amount: Int, isMagical: Bool = false) {
         var finalDamage = amount
