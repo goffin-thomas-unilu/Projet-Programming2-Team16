@@ -37,6 +37,7 @@ func printCommand(){
 
 func askMove(){
     print()
+    //boolNextStage = false
     print("Ou voulez-vous vous déplacer : \n-up \n-left \n-right \n-down")
     let moveChoice = readLine()
     switch moveChoice?.lowercased() {
@@ -68,11 +69,13 @@ func askMove(){
             print("Direction inconnue, veuillez réessayer")
             menu()
         }
+        
 
 }
 
 func askStage(){
     print()
+    boolNextStage = false
     print("Vous êtes actuellement au stage: id: \(stageMTN.id), name: \(stageMTN.name)")
     print()
     print("Choisissez à quel stage vous voulez accéder, en indiquant son id")
@@ -97,4 +100,5 @@ func askStage(){
         print("❌ Invalid id.")
         menu()
     }
+    
 }

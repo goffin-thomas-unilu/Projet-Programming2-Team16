@@ -2,7 +2,7 @@ var boolNextStage = false
 enum TileType {
     case empty
     case player
-    case obstacle
+    case pnj(String)
     case item(String)
     case enemy(String)
     case nextStage([Int])
@@ -36,12 +36,12 @@ struct Stage1 {
         for row in map {
             let line = row.map { tile in
                 switch tile.type {
-                case .empty: return "⬜"
-                case .player: return "🧍"
-                case .obstacle: return "🪨"
-                case .item(let name): return "🎁"
-                case .enemy(let name): return "👾"
-                case.nextStage(let idStage): return " ▼"
+                    case .empty: return "⬜"
+                    case .player: return "🧍"
+                    case .pnj(let pnjName): return "👤"
+                    case .item(let name): return "🎁"
+                    case .enemy(let name): return "👾"
+                    case.nextStage(let idStage): return " ▼"
                 }
             }.joined(separator: " ")
             print(line)
@@ -85,9 +85,12 @@ struct Stage1 {
             if case .nextStage(_) = tileType {
                 boolNextStage = true
             }
+            
 
         } else {
             print("🚫 Can't move outside the map!")
         }
+        
     }
+    
 }
