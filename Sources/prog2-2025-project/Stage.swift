@@ -76,7 +76,7 @@ struct Stage1 {
             // Pattern Matching
             // ⚠️ Sauvegarde du type de la case AVANT modification
             let tileType = map[newX][newY].type
-
+            /*
             // Mise à jour de la map
             map[x][y] = baseMap[x][y]
             map[newX][newY] = Tile1(type: .player)
@@ -89,9 +89,55 @@ struct Stage1 {
             if case .nextStage(_) = tileType {
                 boolNextStage = true
             }
-            
+            if case .riddle(let idRiddle) = tileType {
+                switch idRiddle {
+                    case 0:
+                        print("Vous devez réussir cette énigme 1 ")
+                        // function enigme0()
+                    case 1:
+                        //print("enigme 2")
+                        enigme1()
+                    default:
+                        print("Erreur")
+                }
+            }
+            */
+             switch tileType {
+                case .enemy(let name):
+                    // func fight(enemy:name)
+                    print("⚔️ Vous avez vaincu l'ennemi : \(name)")
+                    baseMap[newX][newY] = Tile1(type: .empty)
+                case .item(let itemName):
+                    print("🎁 Vous avez ramassé : \(itemName)")
+                    // addToInventory(item:itemName)
+                    baseMap[newX][newY] = Tile1(type: .empty)
+                case .riddle(let idRiddle):
+                    switch idRiddle {
+                        case 0:
+                            print("❓ Énigme 1 :")
+                            // enigme0()
+                        case 1:
+                            enigme1()
+                        default:
+                            print("Erreur d'énigme")
+                    }
+                    baseMap[newX][newY] = Tile1(type: .empty) // supprime l’énigme après
+                case .nextStage:
+                    boolNextStage = true
+                default:
+                    break
+            }
 
-        } else {
+            // Mise à jour de la position du joueur
+            map[x][y] = baseMap[x][y] // restore l’ancienne case
+            map[newX][newY] = Tile1(type: .player)
+            playerPosition = (newX, newY)
+
+            print("✅ You moved \(direction).")
+            displayMap()
+        }
+
+        else {
             print("🚫 Can't move outside the map!")
         }
         

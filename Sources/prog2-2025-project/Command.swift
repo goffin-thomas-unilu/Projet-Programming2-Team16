@@ -6,6 +6,8 @@ func printCommand(){
     print("- Afficher votre inventaire : inventory")
     print("- Afficher le status : status")
     print("- Information sur le stage : stage")
+    print("- Information sur un ennemie : assess")
+    print("- Intéragir avec un mécanisme : interact")
     print("- Quitter le jeu : exit")
 
     let commandChoose = readLine()
@@ -23,8 +25,14 @@ func printCommand(){
         menu()    
     case "stage":
         print()
-        print("Info sur le stage Actuel: \nnom:\(stageMTN.name), \nid:\(stageMTN.id), \ndescription:\(stageMTN.description), \nrelié aux id: \(stageMTN.connexion) ")
+        print("Info sur le stage Actuel: \n nom: \(stageMTN.name), \n id: \(stageMTN.id), \n description: \(stageMTN.description), \n relié aux id: \(stageMTN.connexion) ")
         menu()
+    case "assess":
+        print()
+        // function to print informations about a specific enemy, printEnemyInfo("Gobelin")
+    case "interact":
+        print()
+        // fonction pour intéragir avec les énigmes 
     case "exit":
         print("Vous quittez le jeu")
         finished = true
@@ -103,3 +111,40 @@ func askStage(){
     }
     
 }
+
+func enigme0(){
+    print()
+    print("Voulez-vous déposer quelque chose sur la tombe du Héro")
+    /* 
+    if inventory.contains("Elixir of Honor"){
+        print("Vous versez le breuvage sur la tombe du Héros défunt")
+        print("Le Héros vous défie en combat singulier pour honorer sa dernière volonté")
+        func fight("Hero")
+        print("\u{001B}[36mSucces: Becoming a hero\u{001B}[0m")
+    
+    }else{
+        print("Vous ne posséder l'objet requis")
+    }
+    */
+}
+func enigme1() {
+    print()
+    print("Vous voyez une étrange rangée de livre..")
+    print("Dans une salle ancienne du donjon, quatre livres reposent sur une table poussiéreuse. Une fresque murale contient une inscription :")
+    print()
+    print("\u{001B}[3mDu chaos naît la sagesse,\nLa guerre mène au silence,\nEt seul le feu révèle la vérité.\u{001B}[0m")
+    print()
+    print("Les quatres livres s'intitulent : \nLe Feu Sacré 📕 , L'Âge du Chaos 📙 , Les Chroniques de la Guerre 📗 , La Sagesse des Anciens 📘")
+    print("Veuillez indiquer votre réponse en écrivant la première lettre la couleur du livre : (rogb,rovb...)")
+    let reponseEnigme1 = readLine()
+    if reponseEnigme1 == "obgr" {
+        print("\u{001B}[32mVous avez réussi l'énigme\u{001B}[0m")
+        print("\u{001B}[36mSuccess: Sherlock Holmes in a Dungeon ?\u{001B}[0m")
+        // add an item to the inventory: +25 hp,+10 mana,+15 DEF
+    }else{
+        print("Le mécanisme ne bouge pas, vous devez reessayer")
+        enigme1()
+    }
+
+}
+    

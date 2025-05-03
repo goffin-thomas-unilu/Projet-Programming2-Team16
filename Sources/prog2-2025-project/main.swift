@@ -21,5 +21,7 @@
 //askStage()
 while !finished {
    menu()
+   
+
 }
 print("Vous avez finis / quitté")

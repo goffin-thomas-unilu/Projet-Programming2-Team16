@@ -54,16 +54,16 @@ let DungeonEntryMap: [[Tile1]] = [
 ]
 let CatacombMap: [[Tile1]] = [
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
-    [Tile1(type: .item("Health Potion")), Tile1(type: .enemy("Goblin")), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .item("Iron Sword"))],
+    [Tile1(type: .item("Health Potion")), Tile1(type: .enemy("Goblin")), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .item("Sword of the Crusader"))],
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .enemy("Skeleton"))],
     [Tile1(type: .enemy("Skeleton")), Tile1(type: .empty), Tile1(type: .enemy("Goblin")), Tile1(type: .empty), Tile1(type: .enemy("Skeleton"))],
-    [Tile1(type: .nextStage([0,1,4])), Tile1(type: .empty), Tile1(type: .enemy("Skeleton")), Tile1(type: .empty), Tile1(type: .empty)]
+    [Tile1(type: .nextStage([0,1,4])), Tile1(type: .empty), Tile1(type: .enemy("Skeleton")), Tile1(type: .empty), Tile1(type: .item("Natural Staff"))]
 ]
 let HauntedForestMap: [[Tile1]] = [
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .enemy("Undead"))],
-    [Tile1(type: .item("Health Potion")), Tile1(type: .enemy("Werewolf")), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .item("Bow"))],
+    [Tile1(type: .item("Health Potion")), Tile1(type: .enemy("Werewolf")), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .item("Bow of the Hunter"))],
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .enemy("Undead")), Tile1(type: .empty)],
-    [Tile1(type: .enemy("Undead")), Tile1(type: .empty), Tile1(type: .enemy("Werewolf")), Tile1(type: .empty), Tile1(type: .empty)],
+    [Tile1(type: .enemy("Undead")), Tile1(type: .empty), Tile1(type: .enemy("Werewolf")), Tile1(type: .empty), Tile1(type: .item("Wand of Fire"))],
     [Tile1(type: .nextStage([0,2,3])), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .enemy("Undead"))]
 ]
 let BridgeSoulsMap: [[Tile1]] = [
@@ -74,38 +74,38 @@ let BridgeSoulsMap: [[Tile1]] = [
 let AbyssSoulMap: [[Tile1]] = [
     [Tile1(type: .enemy("Ice Spectre")), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
     [Tile1(type: .enemy("Ice Spectre")), Tile1(type: .enemy("Ice Spectre")), Tile1(type: .enemy("Ice Spectre")), Tile1(type: .empty)],
-    [Tile1(type: .empty), Tile1(type: .enemy("Ice Spectre")), Tile1(type: .empty), Tile1(type: .empty)],
-    [Tile1(type: .nextStage([2,3,5])), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .enemy("Ice Spectre"))]
+    [Tile1(type: .item("Sacred Hammer")), Tile1(type: .enemy("Ice Spectre")), Tile1(type: .empty), Tile1(type: .empty)],
+    [Tile1(type: .nextStage([2,3,5,6])), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .enemy("Ice Spectre"))]
 ]
 let ForbiddenSanctuaryMap: [[Tile1]] = [
+    [Tile1(type: .item("Flaming robe")), Tile1(type: .empty), Tile1(type: .empty)],
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
-    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
-    [Tile1(type: .nextStage([3,7,9])), Tile1(type: .empty), Tile1(type: .empty)]
+    [Tile1(type: .nextStage([3,7,9])), Tile1(type: .empty), Tile1(type: .item("Shadow cloak"))]
 ]
 let GiantDenMap: [[Tile1]] = [
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
-    [Tile1(type: .empty), Tile1(type: .enemy("Giant")), Tile1(type: .empty)],
+    [Tile1(type: .item("Druid tunic")), Tile1(type: .enemy("Giant")), Tile1(type: .empty)],
     [Tile1(type: .nextStage([3,7,9])), Tile1(type: .empty), Tile1(type: .empty)]
 ]
 let HeroTombMap: [[Tile1]] = [
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
     [Tile1(type: .riddle(0)), Tile1(type: .pnj("Heros Tomb")), Tile1(type: .empty)],
-    [Tile1(type: .nextStage([5])), Tile1(type: .empty), Tile1(type: .empty)]
+    [Tile1(type: .nextStage([5])), Tile1(type: .empty), Tile1(type: .item("Plate armor"))]
 ]
 let KingHallMap: [[Tile1]] = [
-    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
+    [Tile1(type: .item("Health Potion")), Tile1(type: .empty), Tile1(type: .item("Mana Potion"))],
     [Tile1(type: .empty), Tile1(type: .enemy("Valdrakar")), Tile1(type: .empty)],
     [Tile1(type: .nextStage([5,6])), Tile1(type: .empty), Tile1(type: .empty)]
 ]
 let LibraryMap: [[Tile1]] = [
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .riddle(1))],
-    [Tile1(type: .nextStage([6,10])), Tile1(type: .empty), Tile1(type: .item("Book: Curse of the King"))]
+    [Tile1(type: .nextStage([6,10])), Tile1(type: .empty), Tile1(type: .item("Secret Scroll"))]
 ]
 let LaboratoryMap: [[Tile1]] = [
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
     [Tile1(type: .empty), Tile1(type: .enemy("Mad Alchemist")), Tile1(type: .empty)],
-    [Tile1(type: .nextStage([9])), Tile1(type: .empty), Tile1(type: .item("Elixir du Heros"))]
+    [Tile1(type: .nextStage([9])), Tile1(type: .empty), Tile1(type: .item("Elixir of Honor"))]
 ]
 // Initialise le stage avec cette map
 
@@ -142,7 +142,7 @@ let LaboratoryMap: [[Tile1]] = [
         name: "Gouffre des Abysse",
         description: "Des escaliers qui descendent dans un gouffre qui semble sans fond",
         map: AbyssSoulMap,
-        connexion: [2,3,5]
+        connexion: [2,3,5,6]
     )
     var ForbiddenSanctuaryStage = Stage1(
         id: 5,
@@ -156,7 +156,7 @@ let LaboratoryMap: [[Tile1]] = [
         name: "Giant's Den",
         description: "Une caverne sombre où se trouve un géant à l'intérieur",
         map: GiantDenMap,
-        connexion: [4,8,9]
+        connexion: [4,8,9,]
     )
     var HerosTombStage = Stage1(
         id: 7,
