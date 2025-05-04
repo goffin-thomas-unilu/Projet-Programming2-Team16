@@ -1,7 +1,7 @@
 import Glibc
 var finished = false
 func printCommand(){
-    // Show others commands
+    // Show others all commands
     print()
     print("Here is the list of orders :")
     print("- Show map : map")
@@ -52,7 +52,7 @@ func printCommand(){
     }
 
 }
-// ask the user where he want to go 
+// ask the user where he want to go in the current stage (up,down,left,right)
 
 func askMove(){
     print()
@@ -176,10 +176,10 @@ func enigme1() {
 }
 func enigme2(){
     print()
-    print("Would you like to use your Secret Scroll ?")
+    print("Would you like to read your Book : Curse of the King ?")
     /* 
-    if inventory.contains("Secret Scroll"){
-        print("You read the secret scroll breaking the curse of the fallen king Valdrakar")
+    if inventory.contains("Book : Curse of the King"){
+        print("You read the Book : Curse of the King breaking the curse of the fallen king Valdrakar")
         print("Valdrakar looks at you and says: ")
         print("\u{001B}[3mYou didn't brandish a weapon... but a hope.\nThe curse is lifted... thanks to you.\nI'm free... and this kingdom can finally heal\nRemember: the greatest power is the power to forgive.\u{001B}[0m")
         print("\u{001B}[36mSucces Chain Breaker: For freeing a tormented soul without resorting to violence.\u{001B}[0m")
@@ -188,7 +188,7 @@ func enigme2(){
         exit(0)
     
     }else{
-        print("You don't have the Secret Scroll in your inventory")
+        print("You don't have the Book : Curse of the King in your inventory")
     }
     */
 
@@ -202,6 +202,7 @@ func autoMode(){
     
     print("\u{001B}[36mSuccess: Becoming a puppet\u{001B}[0m")
     //let listeMoves = ["down","up","left","right"]
+    // Check which stage the player is with the id of the current stage
     switch stageMTN.id {
         case 0:
             print()
@@ -234,7 +235,7 @@ func autoMode(){
             //stageMTN.move(direction: "down")
             //changeStage(from: stageMTN, to: LibraryStage)
             /*
-            if inventory.contains("Secret Scroll"){
+            if inventory.contains("Book : Curse of the King"){
                 stageMTN.move(direction: "down")
                 stageMTN.move(direction: "down")
                 stageMTN.move(direction: "left")
@@ -313,4 +314,44 @@ func afficherAsciiArt() {
       *       | *   **    * **    ||**      **
        
     """)
+}
+func afficherAsciiArtDragon() {
+    print("""
+                       
+               ,                   ,     
+              / \\    )\\__/(     / \\       
+             /   \\  (_\\  /_)   /   \\      
+        ____/_____\\__\\@  @/___/_____\\____ 
+        |             |\\../|              |
+        |              \\VV/               |
+        |        ----------------          |
+        |_________________________________ |
+        |    /\\ /      \\\\       /\\     | 
+        |   /   V        ))       V  \\    | 
+        |  /     `       //      '    \\   | 
+        `                V             '
+            
+    """)
+}
+
+func becomeADragon(){
+    /*
+
+    if inventory.contains("Dragon Soul Fragment"){
+        print("Do you want to use this Soul ? (y/n)")
+        let answerDragon = readline()
+        switch answerDragon:
+            case "y":
+                print("You feel your waistline expanding and your mind rambling ")
+                print("...")
+                print("You've become a dragon hungry for gold and blood from now on")
+                afficherAsciiArtDragon
+                print("\u{001B}[36mSucces: Become a Dragon.\u{001B}[0m")
+                print("\u{001B}[32m🎉 Alternative ending unlocked! \nYou consumed the Soul of Valdrakar\u{001B}[0m") // 2nd ENDING CONDITION
+                game.finished = true
+                
+
+    }
+
+    */
 }

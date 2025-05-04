@@ -15,6 +15,7 @@ struct Tile1{
 }
 struct Stage1 {
     let id: Int
+    let effect: String
     let name: String
     var description: String
     var map: [[Tile1]]
@@ -23,11 +24,12 @@ struct Stage1 {
     var connexion: [Int]
 
     // Constructor to create a stage
-    init(id: Int, name: String, description: String, map : [[Tile1]],connexion: [Int]) {
+    init(id: Int, name: String, description: String, map : [[Tile1]],connexion: [Int],effect:String) {
         self.id = id
         self.name = name
         self.description = description
         self.map = map
+        self.effect = effect 
         self.playerPosition = (0,2)
         self.map[playerPosition.x][playerPosition.y] = Tile1(type: .player)
         self.connexion = connexion
@@ -47,11 +49,11 @@ struct Stage1 {
                 switch tile.type {
                     case .empty: return "⬜"
                     case .player: return "🧍"
-                    case .riddle(let idRiddle): return "❔"
-                    case .pnj(let pnjName): return "👤"
-                    case .item(let name): return "🎁"
-                    case .enemy(let name): return "👾"
-                    case.nextStage(let idStage): return " ▼"
+                    case .riddle(_): return "❔"
+                    case .pnj(_): return "👤"
+                    case .item(_): return "🎁"
+                    case .enemy(_): return "👾"
+                    case.nextStage(_): return " ▼"
                 }
             }.joined(separator: " ")
             print(line)

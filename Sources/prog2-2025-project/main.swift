@@ -12,7 +12,6 @@ class MyGame{
 // --- Point d'entrée du programme ---
 let game = MyGame()
 
-
 while !game.finished {
     menu()
 }
