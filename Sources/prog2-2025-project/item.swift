@@ -17,26 +17,21 @@ enum ItemEffect {
 }
 
 struct Item {
-    let id: String
     let name: String
     let type: ItemType
     let description: String
-    let value: Int
     let effects: [ItemEffect]
     var isEquipped: Bool = false
     
-    init(id: String, name: String, type: ItemType, description: String, value: Int, effects: [ItemEffect]) {
-        self.id = id
+    init(name: String, type: ItemType, description: String, effects: [ItemEffect]) {
         self.name = name
         self.type = type
         self.description = description
-        self.value = value
         self.effects = effects
     }
     
     func display() {
         print("\n\(name) [\(type)]")
-        print("Value: \(value)")
         print("Description: \(description)")
         print("Effects:")
         for effect in effects {
@@ -103,15 +98,15 @@ class Inventory {
         return true
     }
     
-    func remove(itemId: String) -> Item? {
-        guard let index = items.firstIndex(where: { $0.id == itemId }) else {
+    func remove(itemName: String) -> Item? {
+        guard let index = items.firstIndex(where: { $0.name == itemName }) else {
             return nil
         }
         return items.remove(at: index)
     }
     
-    func equip(itemId: String) -> String {
-        guard let index = items.firstIndex(where: { $0.id == itemId }) else {
+    func equip(itemName: String) -> String {
+        guard let index = items.firstIndex(where: { $0.name == itemName }) else {
             return "Item not found"
         }
         
@@ -140,118 +135,90 @@ class Inventory {
 extension Item {
     static let allItems: [Item] = [
         Item(
-            id: "w1",
             name: "Sword of the Crusader",
             type: .weapon,
             description: "Blessed sword effective against undead",
-            value: 150,
             effects: [
                 .damageBoost(multiplier: 1.2),
                 .affinityBoost(affinity: .light, power: 15)
             ]
         ),
         Item(
-            id: "w2",
             name: "Bow of the Hunter",
             type: .weapon,
             description: "Precision longbow",
-            value: 120,
             effects: [.damageBoost(multiplier: 1.25)]
         ),
         Item(
-            id: "w3",
             name: "Natural Staff",
             type: .weapon,
             description: "Enhances healing at night",
-            value: 130,
             effects: [.affinityBoost(affinity: .water, power: 10)]
         ),
         Item(
-            id: "w4",
             name: "Wand of Fire",
             type: .weapon,
             description: "Burns enemies for 3 damage/turn",
-            value: 140,
             effects: [.statusEffect(type: "burn", duration: 2)]
         ),
         Item(
-            id: "w5",
             name: "Sacred Hammer",
             type: .weapon,
             description: "Heals 5% HP after each hit",
-            value: 160,
-            effects: [.heal(amount: 0)] // Calculated during combat
+            effects: [.heal(amount: 0)]
         ),
         Item(
-            id: "a1",
             name: "Plate Armor",
             type: .armor,
             description: "Heavy metal armor",
-            value: 200,
             effects: [.defenseBoost(amount: 15)]
         ),
         Item(
-            id: "a2",
             name: "Druid Tunic",
             type: .armor,
             description: "Regenerates 2 MP per turn",
-            value: 180,
             effects: [.restoreMana(amount: 2)]
         ),
         Item(
-            id: "a3",
             name: "Shadow Cloak",
             type: .armor,
             description: "10% dodge chance",
-            value: 170,
             effects: [.defenseBoost(amount: 5)]
         ),
         Item(
-            id: "a4",
             name: "Flaming Robe",
             type: .armor,
             description: "Reduces ice damage by 30%",
-            value: 190,
             effects: [.affinityBoost(affinity: .fire, power: 30)]
         ),
         Item(
-            id: "c1",
             name: "Healing Potion",
             type: .consumable,
             description: "Restores 50 HP",
-            value: 30,
             effects: [.heal(amount: 50)]
         ),
         Item(
-            id: "c2",
             name: "Mana Potion",
             type: .consumable,
             description: "Restores 20 MP",
-            value: 25,
             effects: [.restoreMana(amount: 20)]
         ),
         Item(
-            id: "s1",
             name: "Dragon Soul Fragment",
             type: .special,
             description: "Mystical dragon essence",
-            value: 500,
             effects: []
         ),
         Item(
-            id: "s2",
             name: "Secret Scroll",
             type: .special,
             description: "Can break certain curses",
-            value: 400,
             effects: []
         ),
         Item(
-            id: "s3",
             name: "Elixir of Honor",
             type: .special,
             description: "Fulfills the hero's last wish",
-            value: 600,
             effects: []
         )
     ]
