@@ -243,6 +243,9 @@ struct Enemy {
     }
     
     func displayStats() {
+       if type.isBoss {
+            print("\n⚠️ BOSS ENEMY ⚠️")
+        }
         print("\n=== \(type.rawValue) ===")
         print("HP: \(health)/\(maxHealth)")
         print("ATK: \(attack) | DEF: \(defense) | SPD: \(speed)")
@@ -256,9 +259,7 @@ struct Enemy {
             }
         }
         
-        if type.isBoss {
-            print("\n⚠️ BOSS ENEMY ⚠️")
-        }
+        
     }
     
     mutating func takeDamage(_ amount: Int, from attackerAffinity: Affinity? = nil, using item: String? = nil) -> (damageDealt: Int, wasCritical: Bool) {
