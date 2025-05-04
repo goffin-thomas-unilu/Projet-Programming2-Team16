@@ -14,7 +14,21 @@ Double-check the .vscode/launch.json file:
 
 # Project Info
 ## Build Instructions
+In the terminal 
 ```
 swift build
 swift run
 ```
+## Changes from Description.md
+
+### Commands
+- command Interact is useless because you can activate a mecanism by going on his tile
+- no help command , because you have 3 mains commands(map,move,command) and inside 'command' you have all others commands you needs
+
+### Bonus Features
+Automatic mode
+ASCII art
+Riddle and Puzzle
+PNJ + dialogs + Quest
+3 Endings Conditions 
+1 ester egg --> becoming a dragon
