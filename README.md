@@ -14,7 +14,7 @@ Double-check the .vscode/launch.json file:
 
 # Project Info
 ## Build Instructions
-""" 
+```
 swift build
 swift run
-"""
+```
