@@ -1,4 +1,5 @@
 var boolNextStage = false
+var automodebool = false
 enum TileType {
     // each case for a specifc object
     case empty
@@ -126,6 +127,10 @@ struct Stage1 {
                 case .pnj(let pnjName):
                     print("In front of you is \(pnjName)")
                     switch pnjName {
+                        case "The mad Puppeteer":
+                            print()
+                            automodebool = true
+                            //autoMode()
                         case "Guardian of the Sanctuary":
                             // func pnj encounter 1
                             print()
@@ -134,6 +139,7 @@ struct Stage1 {
                         case "Heros Tomb":
                             // func pnj encounter 2
                             print()
+                            encounterPnj2()
                         default:
                             print("Err")
                     }
@@ -147,6 +153,10 @@ struct Stage1 {
                             // enigme0()
                         case 1:
                             enigme1()
+                        case 2:
+                            print()
+                            // 1 attempt only
+                            //enigme2()
                         default:
                             print("Riddle error")
                     }

@@ -1,3 +1,4 @@
 while !finished {
    menu()
+   
 }

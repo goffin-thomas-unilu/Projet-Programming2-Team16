@@ -1,12 +1,12 @@
 // Map creation
 
 let DungeonEntryMap: [[Tile1]] = [
-    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
+    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .pnj("The mad Puppeteer"))],
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .item("Diary of an adventurer"))],
     [Tile1(type: .nextStage([1,2])), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .nextStage([1,2]))]
 ]
 let CatacombMap: [[Tile1]] = [
-    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
+    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .pnj("The mad Puppeteer"))],
     [Tile1(type: .item("Health Potion")), Tile1(type: .enemy("Goblin")), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .item("Sword of the Crusader"))],
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .enemy("Skeleton"))],
     [Tile1(type: .enemy("Skeleton")), Tile1(type: .empty), Tile1(type: .enemy("Goblin")), Tile1(type: .empty), Tile1(type: .enemy("Skeleton"))],
@@ -25,7 +25,7 @@ let BridgeSoulsMap: [[Tile1]] = [
     [Tile1(type: .nextStage([1,4,5])), Tile1(type: .empty), Tile1(type: .pnj("Guardian of the Sanctuary")), Tile1(type: .empty), Tile1(type: .empty)]
 ]
 let AbyssSoulMap: [[Tile1]] = [
-    [Tile1(type: .enemy("Ice Spectre")), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
+    [Tile1(type: .enemy("Ice Spectre")), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .pnj("The mad Puppeteer"))],
     [Tile1(type: .enemy("Ice Spectre")), Tile1(type: .enemy("Ice Spectre")), Tile1(type: .enemy("Ice Spectre")), Tile1(type: .empty)],
     [Tile1(type: .item("Sacred Hammer")), Tile1(type: .enemy("Ice Spectre")), Tile1(type: .empty), Tile1(type: .empty)],
     [Tile1(type: .nextStage([2,3,5,6])), Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .enemy("Ice Spectre"))]
@@ -36,7 +36,7 @@ let ForbiddenSanctuaryMap: [[Tile1]] = [
     [Tile1(type: .nextStage([3,7,9])), Tile1(type: .empty), Tile1(type: .item("Shadow cloak"))]
 ]
 let GiantDenMap: [[Tile1]] = [
-    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
+    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .pnj("The mad Puppeteer"))],
     [Tile1(type: .item("Druid tunic")), Tile1(type: .enemy("Giant")), Tile1(type: .empty)],
     [Tile1(type: .nextStage([3,7,9])), Tile1(type: .empty), Tile1(type: .empty)]
 ]
@@ -48,10 +48,10 @@ let HeroTombMap: [[Tile1]] = [
 let KingHallMap: [[Tile1]] = [
     [Tile1(type: .item("Health Potion")), Tile1(type: .empty), Tile1(type: .item("Mana Potion"))],
     [Tile1(type: .empty), Tile1(type: .enemy("Valdrakar")), Tile1(type: .empty)],
-    [Tile1(type: .nextStage([5,6])), Tile1(type: .empty), Tile1(type: .empty)]
+    [Tile1(type: .nextStage([5,6])), Tile1(type: .riddle(2)), Tile1(type: .pnj("The mad Puppeteer"))]
 ]
 let LibraryMap: [[Tile1]] = [
-    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .empty)],
+    [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .pnj("The mad Puppeteer"))],
     [Tile1(type: .empty), Tile1(type: .empty), Tile1(type: .riddle(1))],
     [Tile1(type: .nextStage([6,10])), Tile1(type: .empty), Tile1(type: .item("Secret Scroll"))]
 ]

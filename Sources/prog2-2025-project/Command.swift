@@ -53,6 +53,7 @@ func printCommand(){
 
 }
 // ask the user where he want to go 
+
 func askMove(){
     print()
     //boolNextStage = false
@@ -64,24 +65,32 @@ func askMove(){
             stageMTN.move(direction: "up")
             if boolNextStage{
                 askStage()
+            } else if automodebool {
+                autoMode()
             }
             menu()
         case "down":
             stageMTN.move(direction: "down")
             if boolNextStage{
                 askStage()
+            }else if automodebool {
+                autoMode()
             }
             menu()
         case "left":
             stageMTN.move(direction: "left")
             if boolNextStage{
                 askStage()
+            }else if automodebool {
+                autoMode()
             }
             menu()
         case "right":
             stageMTN.move(direction: "right")
             if boolNextStage{
                 askStage()
+            }else if automodebool {
+                autoMode()
             }
             menu()
         default:
@@ -92,6 +101,7 @@ func askMove(){
 
 }
 // ask the user if he want to change from a stage to another and if yes which stages
+
 func askStage(){
     print()
     boolNextStage = false
@@ -122,6 +132,7 @@ func askStage(){
     
 }
 // function for the first riddle
+
 func enigme0(){
     print()
     print("Would you like to place something on the Hero's grave ?")
@@ -131,13 +142,17 @@ func enigme0(){
         print("The Hero challenges you to single combat to honor his last wish")
         func fight("Hero")
         print("\u{001B}[36mSucces: Becoming a hero\u{001B}[0m")
+        print("\u{001B}[32mYou have finished the game by becoming a Hero\u{001B}[0m") // 1st ENDING CONDITION
+        exit(0)
     
     }else{
         print("You don't have the required item")
     }
     */
 }
+
 // function for the second riddle
+
 func enigme1() {
     print()
     print("You see a strange row of books...")
@@ -158,7 +173,91 @@ func enigme1() {
     }
 
 }
+func enigme2(){
+    print()
+    print("Would you like to use your Secret Scroll ?")
+    /* 
+    if inventory.contains("Secret Scroll"){
+        print("You read the secret scroll breaking the curse of the fallen king Valdrakar")
+        print("Valdrakar looks at you and says: ")
+        print("\u{001B}[3mYou didn't brandish a weapon... but a hope.\nThe curse is lifted... thanks to you.\nI'm free... and this kingdom can finally heal\nRemember: the greatest power is the power to forgive.\u{001B}[0m")
+        print("\u{001B}[36mSucces Chain Breaker: For freeing a tormented soul without resorting to violence.\u{001B}[0m")
+        print("\u{001B}[32m🎉 Alternative ending unlocked! \nYou broke the curse without violence.\nPeace has prevailed over blood.\n🕊️ REDEMPTION.\u{001B}[0m") // 2nd ENDING CONDITION
+        exit(0)
     
+    }else{
+        print("You don't have the Secret Scroll in your inventory")
+    }
+    */
+
+}
+func encounterPnj0(){
+    print()
+    print("A hooded old man approaches. His eyes shine with a strange glint. Before you can react, he whispers: \n<Let me lead your steps for a moment...>")
+    //func auto mode
+}
+func autoMode(){
+    
+    print("\u{001B}[36mSuccess: Becoming a puppet\u{001B}[0m")
+    //let listeMoves = ["down","up","left","right"]
+    switch stageMTN.id {
+        case 0:
+            print()
+            stageMTN.move(direction: "down")
+            stageMTN.move(direction: "down")
+            changeStage(from: stageMTN, to: CatacombStage)
+        case 2:
+            print()
+            stageMTN.move(direction: "down")
+            stageMTN.move(direction: "left")
+            stageMTN.move(direction: "left")
+            stageMTN.move(direction: "down")
+            stageMTN.move(direction: "left")
+            stageMTN.move(direction: "down")
+            stageMTN.move(direction: "down")
+            stageMTN.move(direction: "left")
+            
+            changeStage(from: stageMTN, to: AbyssSoulsStage)
+        case 4:
+            stageMTN.move(direction: "down")
+            stageMTN.move(direction: "down")
+            stageMTN.move(direction: "left")
+            stageMTN.move(direction: "down")
+            stageMTN.move(direction: "left")
+            stageMTN.move(direction: "left")
+            changeStage(from: stageMTN, to: GiantDenStage)
+        case 6:
+            print("oui")
+            //stageMTN.move(direction: "down")
+            //stageMTN.move(direction: "down")
+            //changeStage(from: stageMTN, to: LibraryStage)
+            /*
+            if inventory.contains("Secret Scroll"){
+                stageMTN.move(direction: "down")
+                stageMTN.move(direction: "down")
+                stageMTN.move(direction: "left")
+                stageMTN.move(direction: "left")
+                changeStage(from: stageMTN, to: KingHallStage)
+            }else {
+                stageMTN.move(direction: "down")
+                stageMTN.move(direction: "down")
+                stageMTN.move(direction: "left")
+                stageMTN.move(direction: "left")
+                changeStage(from: stageMTN, to: LibraryStage)
+            }
+            */
+        case 9:
+            stageMTN.move(direction: "left")
+            stageMTN.move(direction: "down")
+            stageMTN.move(direction: "down")
+            stageMTN.move(direction: "right")
+            stageMTN.move(direction: "left")
+            stageMTN.move(direction: "left")
+            changeStage(from: stageMTN, to: GiantDenStage)
+        default:
+            print("ERR")
+        }
+}
 func encounterPnj1(){
     print()
     print("Answer the spectrum 🩻 question if you have the courage")
@@ -187,4 +286,29 @@ func encounterPnj1(){
     } else {
         print("❌ Ce n'est pas un nombre valide.")
     }
+}
+
+func encounterPnj2(){
+    print("In front of a hero's grave ")
+    afficherAsciiArt()
+
+}
+func afficherAsciiArt() {
+    print("""
+                      
+                     (    )
+                     __)(__
+               _____/      \\\\_____
+              |                   ||
+              |  _      ___   _   ||
+              | | \\     |   | \\ ||
+              | |  |     |   |  | ||
+              | |_/      |   |_/  ||
+              | | \\     |   |    ||
+              | |  \\    |   |    ||
+              | |   \\. _|_. | .  ||
+              |                   ||
+      *       | *   **    * **    ||**      **
+       
+    """)
 }
