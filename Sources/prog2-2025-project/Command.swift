@@ -43,8 +43,8 @@ func printCommand(){
         case "exit":
             // leave the game
             print("Leaving the game")
-            finished = true
-            exit(0)
+            game.finished = true
+            //exit(0)
         default:
             // if Typing error
             print("Order does not exist, return to menu...")
@@ -143,6 +143,7 @@ func enigme0(){
         func fight("Hero")
         print("\u{001B}[36mSucces: Becoming a hero\u{001B}[0m")
         print("\u{001B}[32mYou have finished the game by becoming a Hero\u{001B}[0m") // 1st ENDING CONDITION
+        game.finished = true
         exit(0)
     
     }else{
@@ -183,6 +184,7 @@ func enigme2(){
         print("\u{001B}[3mYou didn't brandish a weapon... but a hope.\nThe curse is lifted... thanks to you.\nI'm free... and this kingdom can finally heal\nRemember: the greatest power is the power to forgive.\u{001B}[0m")
         print("\u{001B}[36mSucces Chain Breaker: For freeing a tormented soul without resorting to violence.\u{001B}[0m")
         print("\u{001B}[32m🎉 Alternative ending unlocked! \nYou broke the curse without violence.\nPeace has prevailed over blood.\n🕊️ REDEMPTION.\u{001B}[0m") // 2nd ENDING CONDITION
+        game.finished = true
         exit(0)
     
     }else{
