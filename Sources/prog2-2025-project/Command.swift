@@ -23,6 +23,7 @@ func printCommand(){
             // Show inventory
             // function to print inventory
             print("You have in your inventory :")
+            print(player.inventory.items)
             menu()
         case "status":
             // Show health point, mana point + stats
