@@ -6,8 +6,8 @@ enum TileType {
     case player
     case pnj(String)
     case riddle(Int)
-    case item(String)
-    case enemy(String)
+    case item(Item)
+    case enemy(Enemy)
     case nextStage([Int])
 }
 struct Tile1{
@@ -120,11 +120,12 @@ struct Stage1 {
                     // func fight(enemy:name)
                     //simpleCombat(player: player, enemy: Enemy)
                     print("⚔️ You've defeated the enemy : \(name)")
+                    simpleCombat(player: player, enemy: name)
                     // we update the baseMap to avoid the fact the enemy is still here even if the user kill him
                     baseMap[newX][newY] = Tile1(type: .empty)
                 case .item(let itemName):
                     print("🎁 You've picked up : \(itemName)")
-                    //player.inventory.add(item: itemName)
+                    player.inventory.add(item: itemName)
                     // same here , to avoid a infinite numbers a object in the inventory
                     // addToInventory(item:itemName)
                     baseMap[newX][newY] = Tile1(type: .empty)
