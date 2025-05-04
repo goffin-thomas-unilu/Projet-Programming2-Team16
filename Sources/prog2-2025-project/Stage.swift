@@ -121,6 +121,7 @@ struct Stage1 {
                     //simpleCombat(player: player, enemy: Enemy)
                     print("⚔️ You've defeated the enemy : \(name)")
                     simpleCombat(player: player, enemy: name)
+                    print("⚔️ You've defeated the enemy : \(name)")
                     // we update the baseMap to avoid the fact the enemy is still here even if the user kill him
                     baseMap[newX][newY] = Tile1(type: .empty)
                 case .item(let itemName):
