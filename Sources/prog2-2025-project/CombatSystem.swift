@@ -10,7 +10,7 @@ func simpleCombat(player: PlayerCharacter, enemy: Enemy) {
         print("\nYour turn! Choose: [1] Attack  [2] Special Skill")
         if let input = readLine() {
             if input == "2" {
-                player.specialSkill.effect(&player, &enemy)
+                player.specialSkill
             } else {
                 // Base attack
                 let damage = max(player.attack - enemy.defense, 1)
