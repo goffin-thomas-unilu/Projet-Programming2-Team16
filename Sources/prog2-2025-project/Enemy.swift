@@ -1,71 +1,122 @@
-enum Affinity {
-    case fire, ice, light, darkness, earth, water, none
-}
+import Foundation
 
-enum EnemyType {
-    case goblin
-    case skeleton
-    case undead
-    case werewolf
-    case iceSpecter
-    case caveGiant
-    case necromancer
-    case madAlchemist
-    case valdrakar
-}
-
-extension EnemyType {
-    func toString() -> String {
+enum Affinity: String, CaseIterable {
+    case fire = "🔥 Fire"
+    case ice = "❄️ Ice"
+    case light = "✨ Light"
+    case darkness = "🌑 Darkness"
+    case earth = "🌍 Earth"
+    case water = "💧 Water"
+    case none = "⚪ None"
+    
+    var strongAgainst: Affinity? {
         switch self {
-            case .goblin: return "🧌 Goblin"
-            case .skeleton: return "💀 Skeleton"
-            case .undead: return "🧟 Undead"
-            case .werewolf: return "🐺 Werewolf"
-            case .iceSpecter: return "👻 Ice Specter"
-            case .caveGiant: return "🗿 Cave Giant"
-            case .necromancer: return "🦴 Necromancer"
-            case .madAlchemist: return "🧪 Mad Alchemist"
-            case .valdrakar: return "🐉 Valdrakar"
+            case .fire: return .ice
+            case .ice: return .water
+            case .water: return .fire
+            case .light: return .darkness
+            case .darkness: return .light
+            default: return nil
+        }
+    }
+    
+    var weakAgainst: Affinity? {
+        switch self {
+            case .fire: return .water
+            case .ice: return .fire
+            case .water: return .ice
+            case .light: return .darkness
+            case .darkness: return .light
+            default: return nil
+        }
+    }
+    
+    var specialEffect: String {
+        switch self {
+            case .fire: return "2-turn burn"
+            case .ice: return "Slowing down (25%)"
+            case .light: return "Immunity to curses"
+            case .darkness: return "Life theft (+5% per attack)"
+            case .earth: return "Armor +20"
+            case .water: return "Heal +10% in aquatic zone"
+            case .none: return "No special effect"
         }
     }
 }
 
-extension EnemyType {
-    static func fromString(_ name: String) -> EnemyType {
-        switch name.lowercased() {
-            case "goblin": return .goblin
-            case "skeleton": return .skeleton
-            case "undead": return .undead
-            case "werewolf": return .werewolf
-            case "ice specter", "icespecter": return .iceSpecter
-            case "cave giant", "cavegiant": return .caveGiant
-            case "necromancer": return .necromancer
-            case "mad alchemist", "madalchemist": return .madAlchemist
-            case "valdrakar": return .valdrakar
-            default: 
-                print("⚠️ Unknown enemy: \(name). Default: Goblin.")
-                return .goblin
+enum EnemyType: String {
+    case goblin = "🧌 Goblin"
+    case skeleton = "💀 Skeleton"
+    case undead = "🧟 Undead"
+    case werewolf = "🐺 Werewolf"
+    case iceSpecter = "👻 Ice Specter"
+    case caveGiant = "🗿 Cave Giant"
+    case necromancer = "🦴 Necromancer"
+    case madAlchemist = "🧪 Mad Alchemist"
+    case valdrakar = "🐉 Valdrakar"
+    
+    var isBoss: Bool {
+        switch self {
+            case .caveGiant, .necromancer, .madAlchemist, .valdrakar: return true
+            default: return false
         }
     }
 }
 
 enum EnemySkill {
-    case stealItems(chance: Int)           // Item theft (% chance)
-    case fleeAtLowHP(threshold: Int)       // Flee when HP < threshold
-    case revive(healthPercent: Int)        // Revive with % HP
-    case magicResistance(reduction: Int)   // Magic damage reduction
-    case poison(damage: Int, duration: Int)// Poison damage
-    case healOverTime(amount: Int)         // HP regeneration
-    case nightBoost(multiplier: Double)    // Nighttime boost
-    case freeze(chance: Int)               // Freeze chance
-    case drainMP(amount: Int)              // MP drain
-    case aoeDamage(multiplier: Double)     // Area of effect damage
-    case armorBreak(reduction: Int)        // Armor reduction
-    case summonEnemy(type: String)         // Enemy summoning
-    case drainHPMP(hpAmount: Int, mpAmount: Int) // HP and MP drain
-    case randomPotionEffect                // Random potion effect
-    case enrage(threshold: Int, multiplier: Double) // Empower when HP < threshold
-    case aoeBreath(damage: Int)            // Area breath attack
+    case stealItems(chance: Int)
+    case fleeAtLowHP(threshold: Int)
+    case revive(healthPercent: Int)
+    case magicResistance(reduction: Int)
+    case poison(damage: Int, duration: Int)
+    case healOverTime(amount: Int)
+    case nightBoost(multiplier: Double)
+    case freeze(chance: Int)
+    case drainMP(amount: Int)
+    case aoeDamage(multiplier: Double)
+    case armorBreak(reduction: Int)
+    case summonEnemy(type: EnemyType)
+    case drainHPMP(hpAmount: Int, mpAmount: Int)
+    case randomPotionEffect
+    case enrage(threshold: Int, multiplier: Double)
+    case aoeBreath(damage: Int)
+    
+    var description: String {
+        switch self {
+            case .stealItems(let chance): 
+                return "Steals items (\(chance)% chance)"
+            case .fleeAtLowHP(let threshold): 
+                return "Flees when HP < \(threshold)"
+            case .revive(let percent): 
+                return "Revives with \(percent)% HP once"
+            case .magicResistance(let reduction): 
+                return "Magic resistance (\(reduction)% reduction)"
+            case .poison(let damage, let duration): 
+                return "Poisons (\(damage) dmg/turn for \(duration) turns)"
+            case .healOverTime(let amount): 
+                return "Heals \(amount) HP per turn"
+            case .nightBoost(let multiplier): 
+                return "Night boost (\(multiplier)x damage)"
+            case .freeze(let chance): 
+                return "Freeze attack (\(chance)% chance)"
+            case .drainMP(let amount): 
+                return "Drains \(amount) MP per hit"
+            case .aoeDamage(let multiplier): 
+                return "Area attack (\(multiplier)x damage)"
+            case .armorBreak(let reduction): 
+                return "Breaks armor (-\(reduction) DEF)"
+            case .summonEnemy(let type): 
+                return "Summons \(type.rawValue)"
+            case .drainHPMP(let hpAmount, let mpAmount): 
+                return "Drains \(hpAmount) HP and \(mpAmount) MP"
+            case .randomPotionEffect: 
+                return "Random potion effects"
+            case .enrage(let threshold, let multiplier): 
+                return "Enrages (<\(threshold)% HP, \(multiplier)x damage)"
+            case .aoeBreath(let damage): 
+                return "Dragon breath (\(damage) dmg to all)"
+        }
+    }
 }
 
 struct Enemy {
@@ -162,7 +213,7 @@ struct Enemy {
                 self.speed = 10
                 self.affinity = .darkness
                 self.skills = [
-                    .summonEnemy(type: "skeleton"),
+                    .summonEnemy(type: .skeleton),
                     .drainHPMP(hpAmount: 5, mpAmount: 5)
                 ]
                 
@@ -192,108 +243,169 @@ struct Enemy {
     }
     
     func displayStats() {
-        print("\n\(type) - HP: \(health)/\(maxHealth), ATK: \(attack), DEF: \(defense), SPD: \(speed)")
-        print("Affinity: \(affinity)")
-        print("Skills:")
-        for skill in skills {
-            print("- \(describeSkill(skill: skill))")
+        print("\n=== \(type.rawValue) ===")
+        print("HP: \(health)/\(maxHealth)")
+        print("ATK: \(attack) | DEF: \(defense) | SPD: \(speed)")
+        print("Affinity: \(affinity.rawValue)")
+        print("Special Effects: \(affinity.specialEffect)")
+        
+        if !skills.isEmpty {
+            print("\nSkills:")
+            for skill in skills {
+                print("- \(skill.description)")
+            }
+        }
+        
+        if type.isBoss {
+            print("\n⚠️ BOSS ENEMY ⚠️")
         }
     }
     
-    private func describeSkill(skill: EnemySkill) -> String {
-        switch skill {
-        case .stealItems(let chance):
-            return "Steals items (\(chance)% chance)"
-        case .fleeAtLowHP(let threshold):
-            return "Flees when HP < \(threshold)"
-        case .revive(let percent):
-            return "Revives with \(percent)% HP once"
-        case .magicResistance(let reduction):
-            return "Magic resistance (\(reduction)% reduction)"
-        case .poison(let damage, let duration):
-            return "Poisons (\(damage) dmg/turn for \(duration) turns)"
-        case .healOverTime(let amount):
-            return "Heals \(amount) HP per turn"
-        case .nightBoost(let multiplier):
-            return "Night boost (\(multiplier)x damage)"
-        case .freeze(let chance):
-            return "Freeze attack (\(chance)% chance)"
-        case .drainMP(let amount):
-            return "Drains \(amount) MP per hit"
-        case .aoeDamage(let multiplier):
-            return "Area attack (\(multiplier)x damage)"
-        case .armorBreak(let reduction):
-            return "Breaks armor (-\(reduction) DEF)"
-        case .summonEnemy(let type):
-            return "Summons \(type)"
-        case .drainHPMP(let hpAmount, let mpAmount):
-            return "Drains \(hpAmount) HP and \(mpAmount) MP"
-        case .randomPotionEffect:
-            return "Random potion effects"
-        case .enrage(let threshold, let multiplier):
-            return "Enrages (<\(threshold)% HP, \(multiplier)x damage)"
-        case .aoeBreath(let damage):
-            return "Dragon breath (\(damage) dmg to all)"
-        }
-    }
-    
-    // mutating func executeSkill(target: inout Character) {
-    //     for skill in skills {
-    //         let randomValue = Int.random(in: 1...100)
-            
-    //         switch skill {
-    //         case .stealItems(let chance) where randomValue <= chance:
-    //             if !target.inventory.isEmpty {
-    //                 let stolenItem = target.inventory.removeFirst()
-    //                 print("\(type) stole your \(stolenItem.name)!")
-    //             }
-                
-    //         case .fleeAtLowHP where health < maxHealth / 4:
-    //             print("\(type) flees from battle!")
-    //             health = 0
-                
-    //         case .poison(let damage, let duration):
-    //             print("You've been poisoned! (\(damage) dmg/turn)")
-                
-    //         case .healOverTime(let amount):
-    //             health = min(maxHealth, health + amount)
-    //             print("\(type) heals \(amount) HP!")
-                
-    //         case .drainMP(let amount):
-    //             target.mana = max(0, target.mana - amount)
-    //             print("\(type) drains \(amount) of your MP!")
-                
-    //         case .summonEnemy(let type):
-    //             print("\(type) summons a \(type)!")
-                
-    //         case .randomPotionEffect:
-    //             let effects = ["heal", "poison", "boost", "confuse"]
-    //             let randomEffect = effects.randomElement()!
-    //             print("Mad Alchemist throws a strange potion: \(randomEffect) effect!")
-                
-    //         case .enrage(_, let multiplier) where health < maxHealth / 2:
-    //             print("\(type) enrages! Damage increased!")
-                
-    //         default:
-    //             break
-    //         }
-    //     }
-    // }
-    
-    mutating func takeDamage(_ amount: Int, isMagical: Bool = false) {
+    mutating func takeDamage(_ amount: Int, from attackerAffinity: Affinity? = nil, using item: String? = nil) -> (damageDealt: Int, wasCritical: Bool) {
         var finalDamage = amount
+        var wasCritical = false
+        
+        // Check for item effects
+        if let item = item {
+            switch (item.lowercased(), type) {
+                case ("sword of the crusader", .skeleton), ("sword of the crusader", .undead):
+                    finalDamage = Int(Double(finalDamage) * 1.2)
+                    print("Sword of the Crusader is effective against undead!")
+                case ("bow of the hunter", _):
+                    finalDamage = Int(Double(finalDamage) * 1.25)
+                case ("wand of fire", .iceSpecter):
+                    finalDamage = Int(Double(finalDamage) * 1.3)
+                    wasCritical = true
+                default:
+                    break
+            }
+        }
+        
+        // Check for affinity weaknesses/resistances
+        if let attackerAffinity = attackerAffinity {
+            if attackerAffinity == self.affinity.strongAgainst {
+                finalDamage = Int(Double(finalDamage) * 1.5)
+                print("It's super effective! (\(self.affinity.rawValue) is weak to \(attackerAffinity.rawValue))")
+                wasCritical = true
+            } else if attackerAffinity == self.affinity.weakAgainst {
+                finalDamage = Int(Double(finalDamage) * 0.5)
+                print("It's not very effective... (\(self.affinity.rawValue) resists \(attackerAffinity.rawValue))")
+            }
+        }
         
         for skill in skills {
-            if case .magicResistance(let reduction) = skill, isMagical {
+            if case .magicResistance(let reduction) = skill, attackerAffinity != nil {
                 finalDamage = finalDamage * (100 - reduction) / 100
             }
         }
         
-        health -= finalDamage
-        if health < 0 {
-            health = 0
+        health = max(0, health - finalDamage)
+        return (finalDamage, wasCritical)
+    }
+    
+    mutating func executeSkill(target: inout PlayerCharacter, isNight: Bool = false) -> (description: String, damage: Int?, effect: (type: String, value: Int)?) {
+        var result = ""
+        var damage: Int? = nil
+        var effect: (type: String, value: Int)? = nil
+        
+        for skill in skills {
+            let randomValue = Int.random(in: 1...100)
+            
+            switch skill {
+                case .poison(let dmg, let duration) where randomValue <= 30:
+                    result += "\(type.rawValue) poisons you for \(dmg) damage over \(duration) turns!\n"
+                    effect = ("poison", duration)
+                    damage = dmg
+                    
+                case .healOverTime(let amount):
+                    health = min(maxHealth, health + amount)
+                    result += "\(type.rawValue) heals \(amount) HP!\n"
+                    
+                case .drainMP(let amount):
+                    target.mana = max(0, target.mana - amount)
+                    result += "\(type.rawValue) drains \(amount) of your MP!\n"
+                    damage = amount
+                    
+                case .summonEnemy(let type):
+                    result += "\(type.rawValue) summons a \(type.rawValue)!\n"
+                    
+                case .randomPotionEffect:
+                    let effects = [
+                        ("heals itself", 15, "heal"),
+                        ("throws a poison flask", 10, "poison"),
+                        ("boosts its attack", 5, "attackBoost")
+                    ]
+                    let chosenEffect = effects.randomElement()!
+                    result += "\(type.rawValue) \(chosenEffect.0)!\n"
+                    effect = (chosenEffect.2, chosenEffect.1)
+                    
+                case .enrage(_, let multiplier) where health < maxHealth / 2:
+                    result += "\(type.rawValue) enrages! Damage increased!\n"
+                    
+                case .aoeBreath(let dmg):
+                    result += "\(type.rawValue) breathes fire on everyone for \(dmg) damage!\n"
+                    damage = dmg
+                    
+                case .nightBoost(let multiplier) where isNight:
+                    let boostedDamage = Int(Double(attack) * multiplier)
+                    result += "\(type.rawValue) is empowered by the night!\n"
+                    damage = boostedDamage
+                    
+                case .stealItems(let chance) where randomValue <= chance && !target.inventory.isEmpty:
+                    let stolenItem = target.inventory.removeFirst()
+                    result += "\(type.rawValue) stole your \(stolenItem)!\n"
+                    
+                case .fleeAtLowHP where health < maxHealth / 4:
+                    result += "\(type.rawValue) flees from battle!\n"
+                    health = 0
+                    
+                case .revive(let percent) where health <= 0:
+                    health = maxHealth * percent / 100
+                    result += "\(type.rawValue) revives with \(percent)% HP!\n"
+                    
+                case .armorBreak(let reduction):
+                    target.defense = max(0, target.defense - reduction)
+                    result += "\(type.rawValue) breaks your armor! (-\(reduction) DEF)\n"
+                    effect = ("armorBreak", reduction)
+                    
+                case .freeze(let chance) where randomValue <= chance:
+                    result += "\(type.rawValue) freezes you in place!\n"
+                    effect = ("freeze", 1) // Freeze for 1 turn
+                    
+                default:
+                    continue
+            }
+            
+            // Only execute one skill per turn
+            if !result.isEmpty {
+                break
+            }
         }
         
-        print("\(type) takes \(finalDamage) damage!")
+        if result.isEmpty {
+            result = "\(type.rawValue) attacks!"
+            damage = attack
+        }
+        
+        return (result, damage, effect)
+    }
+
+    func createEnemy(from name: String) -> Enemy {
+        let lowercasedName = name.lowercased().replacingOccurrences(of: " ", with: "")
+        
+        switch lowercasedName {
+            case "goblin": return Enemy(type: .goblin)
+            case "skeleton": return Enemy(type: .skeleton)
+            case "undead": return Enemy(type: .undead)
+            case "werewolf": return Enemy(type: .werewolf)
+            case "icespecter": return Enemy(type: .iceSpecter)
+            case "cavegiant": return Enemy(type: .caveGiant)
+            case "necromancer": return Enemy(type: .necromancer)
+            case "madalchemist": return Enemy(type: .madAlchemist)
+            case "valdrakar": return Enemy(type: .valdrakar)
+            default:
+                print("⚠️ Unknown enemy: \(name). Defaulting to Goblin.")
+                return Enemy(type: .goblin)
+        }
     }
 }
