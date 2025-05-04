@@ -86,11 +86,12 @@ struct Item {
 }
 
 class Inventory {
-    private(set) var items: [Item] = []
-    private(set) var capacity: Int
+    var items: [Item] = []
+    var capacity: Int
     
     init(capacity: Int = 20) {
         self.capacity = capacity
+        self.items = []
     }
     
     func add(item: Item) -> Bool {

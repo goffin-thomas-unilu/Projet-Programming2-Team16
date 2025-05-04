@@ -118,11 +118,13 @@ struct Stage1 {
                 case .enemy(let name):
                     // start the fight with the enemy name
                     // func fight(enemy:name)
+                    //simpleCombat(player: player, enemy: Enemy)
                     print("⚔️ You've defeated the enemy : \(name)")
                     // we update the baseMap to avoid the fact the enemy is still here even if the user kill him
                     baseMap[newX][newY] = Tile1(type: .empty)
                 case .item(let itemName):
                     print("🎁 You've picked up : \(itemName)")
+                    //player.inventory.add(item: itemName)
                     // same here , to avoid a infinite numbers a object in the inventory
                     // addToInventory(item:itemName)
                     baseMap[newX][newY] = Tile1(type: .empty)

@@ -351,8 +351,9 @@ struct Enemy {
                     result += "\(type.rawValue) is empowered by the night!\n"
                     damage = boostedDamage
                     
-                case .stealItems(let chance) where randomValue <= chance && !target.inventory.isEmpty:
-                    let stolenItem = target.inventory.removeFirst()
+                case .stealItems(let chance) where randomValue <= chance && !isEmpty():
+                    let stolenItem = player.inventory.items.first
+                    removeFirst()
                     result += "\(type.rawValue) stole your \(stolenItem)!\n"
                     
                 case .fleeAtLowHP where health < maxHealth / 4:
