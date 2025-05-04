@@ -12,6 +12,7 @@ class MyGame{
 // --- Point d'entrée du programme ---
 let game = MyGame()
 
+askCharacter()
 while !game.finished {
     menu()
 }

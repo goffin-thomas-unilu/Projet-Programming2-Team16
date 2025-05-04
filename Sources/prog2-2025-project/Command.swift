@@ -1,5 +1,6 @@
 import Glibc
 var finished = false
+var player = knight
 func printCommand(){
     // Show others all commands
     print()
@@ -25,7 +26,8 @@ func printCommand(){
             menu()
         case "status":
             // Show health point, mana point + stats
-            print("This is your status : 150hp, 23mp ")
+            print()
+            displayPlayerStatus()
             menu()    
         case "stage":
             // Show informations on the current stage
@@ -33,6 +35,7 @@ func printCommand(){
             print("Info on the Current course: \n nom: \(stageMTN.name), \n id: \(stageMTN.id), \n description: \(stageMTN.description), \n linked to id: \(stageMTN.connexion) ")
             menu()
         case "assess":
+
             // Show informations about enemy
             print()
             // function to print informations about a specific enemy, printEnemyInfo("Gobelin")
@@ -335,6 +338,7 @@ func afficherAsciiArtDragon() {
 }
 
 func becomeADragon(){
+    player = dragon
     /*
 
     if inventory.contains("Dragon Soul Fragment"){
@@ -342,6 +346,7 @@ func becomeADragon(){
         let answerDragon = readline()
         switch answerDragon:
             case "y":
+                player = dragon
                 print("You feel your waistline expanding and your mind rambling ")
                 print("...")
                 print("You've become a dragon hungry for gold and blood from now on")
@@ -354,4 +359,74 @@ func becomeADragon(){
     }
 
     */
+}
+func askCharacter(){
+    print()
+    print("Choose your Character among ")
+    displayPlayerCharacters()
+    print("1: Knight \n2: Paladin \n3: Hunter \n4: Druid \n5: Pyromancer")
+    if let inputCharacter = readLine(),let characterChoice = Int(inputCharacter) {
+        switch characterChoice {
+        case 1:
+            player = knight
+            print("You have chosen to become: \(player.characterClass)")
+        case 2:
+            player = paladin
+            print("You have chosen to become: \(player.characterClass)")
+        case 3:
+            player = hunter
+            print("You have chosen to become: \(player.characterClass)")
+        case 4:
+            player = druid
+            print("You have chosen to become: \(player.characterClass)")
+        case 5:
+            player = pyromancer
+            print("You have chosen to become: \(player.characterClass)")
+        default:
+            print("Error , you are a knight")
+        }
+        
+    }
+}
+func displayInfoEnnemis(ennemy: Enemy){
+    ennemy.displayStats()
+
+}
+func askEnemy(){
+    print()
+    print("Which enemies would you like to know more about ?")
+    print("1: Goblin \n2: Skeleton \n3: Undead \n4: Werewolf \n5: iceSpecter \n6: caveGiant \n7: necromancer \n8: mad-Alchemist \n9: Valdrakar")
+    if let enemieChoice = readLine(), let enemieID = Int(enemieChoice){
+        switch enemieID {
+        case 1:
+            print()
+            //displayInfoEnnemis(ennemy: gobelin)
+        case 2:
+            print()
+            //displayInfoEnnemis(ennemy: skeleton)
+        case 3:
+            print()
+            //displayInfoEnnemis(ennemy: undead)
+        case 4:
+            print()
+            //displayInfoEnnemis(ennemy: werewolf)
+        case 5:
+            print()
+            //displayInfoEnnemis(ennemy: iceSpecter)
+        case 6:
+            print()
+            //displayInfoEnnemis(ennemy: caveGiant)
+        case 7:
+            print()
+            //displayInfoEnnemis(ennemy: necromancer)
+        case 8:
+            print()
+            //displayInfoEnnemis(ennemy: madAlchemist)
+        case 9:
+            print()
+            //displayInfoEnnemis(ennemy: Valdrakar)
+        default:
+            print("This enemy does not exist in the world")
+        }
+    }
 }

@@ -1,5 +1,4 @@
 import Foundation
-
 // An enum for character classes.
 enum CharacterClass: String {
     case knight = "Knight"
@@ -7,6 +6,7 @@ enum CharacterClass: String {
     case hunter = "Hunter"
     case druid = "Druid"
     case pyromancer = "Pyromancer"
+    case dragon = "Dragon"
 }
 
 // Structure for the special skills
@@ -18,13 +18,13 @@ struct SpecialSkill {
 // Structure for a player character
 struct PlayerCharacter {
     let characterClass: CharacterClass
-    let healthPoint: Int
-    let mana: Int
-    let stamina: Int
-    let attack: Int
-    let speed: Int
-    let defense: Int
-    let magic: Int
+    var healthPoint: Int
+    var mana: Int
+    var stamina: Int
+    var attack: Int
+    var speed: Int
+    var defense: Int
+    var magic: Int
     let specialSkill: SpecialSkill
 }
 
@@ -39,6 +39,8 @@ let druid = PlayerCharacter(characterClass: .druid, healthPoint: 120, mana: 30, 
 
 let pyromancer = PlayerCharacter(characterClass: .pyromancer, healthPoint: 90, mana: 35, stamina: 15, attack: 10, speed: 15, defense: 5, magic: 60, specialSkill: SpecialSkill(name: "Supreme fireball", description: "Burns for 3 turns"))
 
+let dragon = PlayerCharacter(characterClass: .dragon, healthPoint: 999, mana: 999, stamina: 999, attack: 999, speed: 999, defense: 999, magic: 999, specialSkill: SpecialSkill(name: "Draconic Wrath", description: "One shot anything"))
+
 // A list of characters
 let playerCharacters = [knight, paladin, hunter, druid, pyromancer]
 
@@ -48,3 +50,7 @@ func displayPlayerCharacters() {
     }
 }
 
+func displayPlayerStatus(){
+    print()
+    print("HP: \(player.healthPoint), Mana: \(player.mana), stamina: \(player.stamina), attack: \(player.attack), speed: \(player.speed), defense: \(player.defense), magic: \(player.magic)")
+}
