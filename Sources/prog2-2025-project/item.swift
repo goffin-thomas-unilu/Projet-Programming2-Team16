@@ -63,16 +63,16 @@ struct Item {
         for effect in effects {
             switch effect {
                 case .heal(let amount):
-                    target.health = min(target.health + amount, target.maxHealth)
+                    player.healthPoint = min(player.healthPoint + amount, player.maxHealth)
                     result += "Healed \(amount) HP. "
                 case .restoreMana(let amount):
-                    target.mana = min(target.mana + amount, target.maxMana)
+                    player.mana = min(player.mana + amount, player.maxMana)
                     result += "Restored \(amount) MP. "
                 case .damageBoost(let multiplier):
-                    target.attack = Int(Double(target.attack) * multiplier)
+                    player.attack = Int(Double(player.attack) * multiplier)
                     result += "Damage increased. "
                 case .defenseBoost(let amount):
-                    target.defense += amount
+                    player.defense += amount
                     result += "Defense boosted by \(amount). "
                 case .affinityBoost(let affinity, _):
                     result += "\(affinity.rawValue) enhanced. "

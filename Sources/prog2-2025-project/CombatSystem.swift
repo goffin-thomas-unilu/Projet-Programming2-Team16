@@ -1,4 +1,4 @@
-
+/*
 // System
 func simpleCombat(player: PlayerCharacter, enemy: Enemy) {
     var player = player
@@ -37,3 +37,4 @@ func simpleCombat(player: PlayerCharacter, enemy: Enemy) {
 
 var myKnight = knight 
 
+*/

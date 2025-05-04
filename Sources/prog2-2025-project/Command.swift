@@ -35,7 +35,7 @@ func printCommand(){
             print("Info on the Current course: \n nom: \(stageMTN.name), \n id: \(stageMTN.id), \n description: \(stageMTN.description), \n linked to id: \(stageMTN.connexion) ")
             menu()
         case "assess":
-
+            askEnemy()
             // Show informations about enemy
             print()
             // function to print informations about a specific enemy, printEnemyInfo("Gobelin")
