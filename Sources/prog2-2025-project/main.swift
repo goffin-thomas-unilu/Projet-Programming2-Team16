@@ -16,5 +16,5 @@ askCharacter()
 while !game.finished {
     menu()
 }
-
+becomeADragon()
 print("👋 Thanks for playing !")

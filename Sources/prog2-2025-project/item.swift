@@ -227,7 +227,16 @@ extension Item {
         return allItems.first { $0.name.lowercased() == name.lowercased() }
     }
 }
-
+func inInventory(itemGuess:Item)->Bool{
+    for i in player.inventory.items{
+        if i.name == itemGuess.name{
+            return true
+        }else{
+            return false
+        }
+    }
+    return false
+}
 extension Character {
     struct CharacterInventory {
         var items: [Item] = []

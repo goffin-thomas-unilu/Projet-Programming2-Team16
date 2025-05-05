@@ -140,11 +140,9 @@ func askStage(){
 func enigme0(){
     print()
     print("Would you like to place something on the Hero's grave ?")
-    /* 
-    if inventory.contains("Elixir of Honor"){
+     
+    if  inInventory(itemGuess: elixirOfHonor){
         print("You pour the beverage over the grave of the deceased hero")
-        print("The Hero challenges you to single combat to honor his last wish")
-        func fight("Hero")
         print("\u{001B}[36mSucces: Becoming a hero\u{001B}[0m")
         print("\u{001B}[32mYou have finished the game by becoming a Hero\u{001B}[0m") // 1st ENDING CONDITION
         game.finished = true
@@ -153,7 +151,7 @@ func enigme0(){
     }else{
         print("You don't have the required item")
     }
-    */
+    
 }
 
 // function for the second riddle
@@ -172,6 +170,9 @@ func enigme1() {
         print("\u{001B}[32mYou've solved the riddle\u{001B}[0m")
         print("\u{001B}[36mSuccess: Sherlock Holmes in a Dungeon ?\u{001B}[0m")
         // add an item to the inventory: +25 hp,+10 mana,+15 DEF
+        player.maxHealth += 25
+        player.maxMana += 10 
+        player.defense += 15
     }else{
         print("The mechanism doesn't move, try again.")
         enigme1()
@@ -181,9 +182,9 @@ func enigme1() {
 func enigme2(){
     print()
     print("Would you like to read your Book : Curse of the King ?")
-    /* 
-    if inventory.contains("Book : Curse of the King"){
-        print("You read the Book : Curse of the King breaking the curse of the fallen king Valdrakar")
+    
+    if inInventory(itemGuess: secretScroll){
+        print("You read the Secret Scroll breaking the curse of the fallen king Valdrakar")
         print("Valdrakar looks at you and says: ")
         print("\u{001B}[3mYou didn't brandish a weapon... but a hope.\nThe curse is lifted... thanks to you.\nI'm free... and this kingdom can finally heal\nRemember: the greatest power is the power to forgive.\u{001B}[0m")
         print("\u{001B}[36mSucces Chain Breaker: For freeing a tormented soul without resorting to violence.\u{001B}[0m")
@@ -194,7 +195,7 @@ func enigme2(){
     }else{
         print("You don't have the Book : Curse of the King in your inventory")
     }
-    */
+    
 
 }
 func encounterPnj0(){
@@ -234,12 +235,12 @@ func autoMode(){
             stageMTN.move(direction: "left")
             changeStage(from: stageMTN, to: GiantDenStage)
         case 6:
-            print("oui")
+            print()
             //stageMTN.move(direction: "down")
             //stageMTN.move(direction: "down")
             //changeStage(from: stageMTN, to: LibraryStage)
-            /*
-            if inventory.contains("Book : Curse of the King"){
+            
+            if inInventory(itemGuess: secretScroll){
                 stageMTN.move(direction: "down")
                 stageMTN.move(direction: "down")
                 stageMTN.move(direction: "left")
@@ -252,7 +253,7 @@ func autoMode(){
                 stageMTN.move(direction: "left")
                 changeStage(from: stageMTN, to: LibraryStage)
             }
-            */
+            
         case 9:
             stageMTN.move(direction: "left")
             stageMTN.move(direction: "down")
@@ -279,14 +280,20 @@ func encounterPnj1(){
             print("\u{001B}[32m+5ATK\u{001B}[0m")
             print("\u{001B}[31m-5DEF\u{001B}[0m")
             // Update the player stats
+            player.attack += 5
+            player.defense -= 5
         case 2:
             print("\u{001B}[32m+5HP\u{001B}[0m")
             print("\u{001B}[31m-5MP\u{001B}[0m")
             // Update the player stats
+            player.healthPoint += 5
+            player.mana -= 5
         case 3:
             print("\u{001B}[32m+5SPD\u{001B}[0m")
             print("\u{001B}[31m-5DEF\u{001B}[0m")
             // Update the player stats
+            player.speed += 5
+            player.defense -= 5
         default:
             print("Err")
         }
@@ -340,26 +347,30 @@ func afficherAsciiArtDragon() {
 
 func becomeADragon(){
     player = dragon
-    /*
-
-    if inventory.contains("Dragon Soul Fragment"){
+    if inInventory(itemGuess: dragonSoulFragment){
         print("Do you want to use this Soul ? (y/n)")
-        let answerDragon = readline()
-        switch answerDragon:
+        let answerDragon = readLine()
+        switch answerDragon{
             case "y":
                 player = dragon
                 print("You feel your waistline expanding and your mind rambling ")
                 print("...")
                 print("You've become a dragon hungry for gold and blood from now on")
-                afficherAsciiArtDragon
+                afficherAsciiArtDragon()
                 print("\u{001B}[36mSucces: Become a Dragon.\u{001B}[0m")
                 print("\u{001B}[32m🎉 Alternative ending unlocked! \nYou consumed the Soul of Valdrakar\u{001B}[0m") // 2nd ENDING CONDITION
                 game.finished = true
+            case "n":
+                print("Nothing happens")
+            default:
+                print("Err")
                 
-
+        }
+    }else{
+        print("You need a Soul of a Dragon to unlock the easter egg")
     }
 
-    */
+    
 }
 func askCharacter(){
     print()

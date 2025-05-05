@@ -20,8 +20,8 @@ struct PlayerCharacter {
     let characterClass: CharacterClass
     var inventory:Inventory
     var healthPoint: Int
-    let maxHealth:Int
-    let maxMana:Int
+    var maxHealth:Int
+    var maxMana:Int
     var mana: Int
     var stamina: Int
     var attack: Int
