@@ -408,37 +408,37 @@ func askEnemy(){
     print()
     print("Which enemies would you like to know more about ?")
     print("1: Goblin \n2: Skeleton \n3: Undead \n4: Werewolf \n5: iceSpecter \n6: caveGiant \n7: necromancer \n8: mad-Alchemist \n9: Valdrakar")
-    if let enemieChoice = readLine(), let enemieID = Int(enemieChoice){
+    if let enemieChoice = readLine(), let enemieID = Int(enemieChoice) {
         switch enemieID {
-        case 1:
-            print()
-            //displayInfoEnnemis(ennemy: gobelin)
-        case 2:
-            print()
-            //displayInfoEnnemis(ennemy: skeleton)
-        case 3:
-            print()
-            //displayInfoEnnemis(ennemy: undead)
-        case 4:
-            print()
-            //displayInfoEnnemis(ennemy: werewolf)
-        case 5:
-            print()
-            //displayInfoEnnemis(ennemy: iceSpecter)
-        case 6:
-            print()
-            //displayInfoEnnemis(ennemy: caveGiant)
-        case 7:
-            print()
-            //displayInfoEnnemis(ennemy: necromancer)
-        case 8:
-            print()
-            //displayInfoEnnemis(ennemy: madAlchemist)
-        case 9:
-            print()
-            //displayInfoEnnemis(ennemy: Valdrakar)
-        default:
-            print("This enemy does not exist in the world")
+            case 1:
+                print()
+                Enemy(type: .goblin).displayStats()
+            case 2:
+                print()
+                Enemy(type: .skeleton).displayStats()
+            case 3:
+                print()
+                Enemy(type: .undead).displayStats()
+            case 4:
+                print()
+                Enemy(type: .werewolf).displayStats()
+            case 5:
+                print()
+                Enemy(type: .iceSpecter).displayStats()
+            case 6:
+                print()
+                Enemy(type: .caveGiant).displayStats()
+            case 7:
+                print()
+                Enemy(type: .necromancer).displayStats()
+            case 8:
+                print()
+                Enemy(type: .madAlchemist).displayStats()
+            case 9:
+                print()
+                Enemy(type: .valdrakar).displayStats()
+            default:
+                print("This enemy does not exist in the world")
         }
     }
 }
