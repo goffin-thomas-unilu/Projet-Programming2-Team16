@@ -157,13 +157,13 @@ struct Stage1 {
                         case 0:
                             print("❓ Riddle 1 :")
                             // 1 attempt only for this riddle
-                            // enigme0()
+                            enigme0()
                         case 1:
                             enigme1()
                         case 2:
                             print()
                             // 1 attempt only
-                            //enigme2()
+                            enigme2()
                         default:
                             print("Riddle error")
                     }
